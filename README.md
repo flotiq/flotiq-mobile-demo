@@ -57,3 +57,9 @@
     `pod update`
 
 You can find more info [here](https://github.com/facebook/react-native/issues/)
+
+## Collaborating
+
+   If you wish to to talk with us about this project, feel free to hop on our [![Discord Chat](https://img.shields.io/discord/308323056592486420.svg)](https://discord.gg/FwXcHnX)  
+   
+   If you found a bug, please report it in [issues](https://github.com/flotiq/flotiq-mobile-demo/issues).
