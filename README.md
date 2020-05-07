@@ -1,22 +1,35 @@
-# Flotiq Mobile Demo
+<a href="https://flotiq.com/">
+    <img src="https://editor.flotiq.com/fonts/fq-logo.svg" alt="Flotiq logo" title="Flotiq" align="right" height="60" />
+</a>
 
-## [Flotiq API documentation](https://flotiq.com/docs/API/)
+Flotiq Mobile Demo
+========================
 
-# SETUP
+[Flotiq API documentation](https://flotiq.com/docs/API/)
+
+Screenshots:
+
+<img src="https://api.flotiq.com/image/200x400/_media-5eb4123f65c3d.png">
+<img src="https://api.flotiq.com/image/200x400/_media-5eb41261030c3.png">
+<img src="https://api.flotiq.com/image/200x400/_media-5eb4128924efe.png">
+<img src="https://api.flotiq.com/image/200x400/_media-5eb414e34e512.png">
+
+
+## SETUP
 
 - To prepare development environment follow up with an official React Native guide. This project was created with RN CLI.
 
     `https://reactnative.dev/docs/environment-setup  -- React Native CLI Quickstart`
 
-## Android Studio
+### Android Studio
 - If You have any problem with setting up Android Studio try to use version added to ToolBox from JetBrains.
 
     `https://www.jetbrains.com/toolbox-app/`
 
-## xCode
+### xCode
 - The only version which You can use is in AppStore. It should work, usually...
 
-## React-Native - PROJECT
+### React-Native - PROJECT
 (`nodejs` is must.)
 
 - Clone the project and run:
