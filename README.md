@@ -8,12 +8,12 @@ Flotiq Mobile Demo
 [Flotiq API documentation](https://flotiq.com/docs/API/)
 
 Screenshots:
-
+<p float="left">
 <img src="https://api.flotiq.com/image/200x400/_media-5eb4123f65c3d.png">
 <img src="https://api.flotiq.com/image/200x400/_media-5eb41261030c3.png">
 <img src="https://api.flotiq.com/image/200x400/_media-5eb4128924efe.png">
 <img src="https://api.flotiq.com/image/200x400/_media-5eb414e34e512.png">
-
+</p>
 
 ## SETUP
 
