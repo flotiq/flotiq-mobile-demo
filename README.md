@@ -24,8 +24,7 @@ Then start building your own app, based on the Flotiq Mobile Expo.
 ## SETUP
 
 - To prepare your development environment follow the official React Native guide. This project was created with RN CLI.
-
-    `https://reactnative.dev/docs/environment-setup  -- React Native CLI Quickstart`
+  Read more in the [React Native CLI Quickstart](https://reactnative.dev/docs/environment-setup).
 
 ### Android Studio
 - We recommend to install Android Studio through the excellent JetBrains Toolbox.
