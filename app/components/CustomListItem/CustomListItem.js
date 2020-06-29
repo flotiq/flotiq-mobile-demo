@@ -1,34 +1,38 @@
 import React from 'react';
-import { View } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+import { View, Text } from 'react-native';
+import { Icon } from 'react-native-elements';
 
-import Colors from '../../helpers/constants/colors';
+import TouchableFeedback from '../TouchableFeedback/TouchableFeedback';
 import styles from './styles';
 
-const CustomListItem = (props) => {
-    if (props.withGradient) {
-        return (
-            <LinearGradient
-                colors={[
-                    Colors.gradient.primary,
-                    Colors.gradient.secondary,
-                ]}
-                useAngle
-                angle={50}
-                angleCenter={{ x: 0.7, y: 1 }}
+const CustomListItem = React.memo(({ element, onPress, title }) => (
+    element
+        ? (
+            <View
                 style={styles.container}
             >
-                {props.children}
-            </LinearGradient>
-        );
-    }
-    return (
-        <View style={styles.container}>
-            <View style={styles.defaultBackground}>
-                {props.children}
+                <TouchableFeedback
+                    onPress={() => onPress(element)}
+                >
+                    <View
+                        style={styles.listItemContainer}
+                    >
+                        <Text
+                            style={styles.title}
+                            numberOfLines={1}
+                        >
+                            {title || element.id}
+                        </Text>
+
+                        <Icon
+                            name="chevron-right"
+                            color="#000000"
+                        />
+                    </View>
+                </TouchableFeedback>
             </View>
-        </View>
-    );
-};
+        )
+        : null
+));
 
 export default CustomListItem;

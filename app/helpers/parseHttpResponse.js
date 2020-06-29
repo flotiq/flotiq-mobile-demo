@@ -4,7 +4,18 @@ export function parseResponseMessage(response) {
     } if (response.message) {
         return response.message;
     }
-    return JSON.stringify(response);
+    if (typeof response === 'object') {
+        try {
+            JSON.parse(response);
+            return JSON.stringify(response);
+        } catch (error) {
+            return error.message;
+        }
+    }
+    if (typeof response === 'string' || response instanceof String) {
+        return response;
+    }
+    return 'Undefined Error';
 }
 
 export function checkApiTokenIsValid(errorMessage) {

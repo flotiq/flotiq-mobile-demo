@@ -1,7 +1,7 @@
 import { Alert, Linking } from 'react-native';
 
 const AUTH_DEFAULT_TITLE = 'Missing API Key!';
-const AUTH_DEFAULT_MESSAGE = 'You have to provsside valid Flotiq API Key!';
+const AUTH_DEFAULT_MESSAGE = 'You have to provide valid Flotiq API Key!';
 
 export const missingApiKeyAlert = (errorMessage) => {
     return new Promise((resolve) => {

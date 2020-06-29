@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import Colors from '../../helpers/constants/colors';
 
 const styles = StyleSheet.create({
     btn: {
@@ -8,6 +9,10 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 18,
         fontFamily: 'Roboto-Regular',
+    },
+    loader: {
+        color: Colors.primary,
+        paddingVertical: 12,
     },
 });
 

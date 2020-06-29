@@ -15,6 +15,9 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         marginTop: 20,
     },
+    confirmBtnTitle: {
+        textAlign: 'center',
+    },
 });
 
 export default styles;

@@ -1,3 +1,5 @@
+import { persistReducer } from 'redux-persist';
+import AsyncStorage from '@react-native-community/async-storage';
 import {
     SET_API_TOKEN,
     CLEAR_ERROR,
@@ -14,7 +16,7 @@ const initialState = {
     isTokenInvalid: false,
 };
 
-export default (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
     // eslint-disable-next-line default-case
     switch (action.type) {
     case SET_API_TOKEN:
@@ -49,7 +51,15 @@ export default (state = initialState, action) => {
             isTokenInvalid: true,
         };
     case LOGOUT:
-        return { initialState };
+        return undefined;
     }
     return state;
 };
+
+const persistConfig = {
+    key: 'auth',
+    storage: AsyncStorage,
+    whitelist: ['apiToken'],
+};
+
+export default persistReducer(persistConfig, reducer);

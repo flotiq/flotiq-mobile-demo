@@ -7,7 +7,6 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import * as authActions from '../../store/actions/auth';
 import styles from './styles';
 
-
 const LougoutBtn = (navigation) => {
     const dispatch = useDispatch();
 

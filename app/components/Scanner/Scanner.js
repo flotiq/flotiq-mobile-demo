@@ -9,8 +9,12 @@ import styles from './styles';
 const Scanner = (props) => {
     const onReadHandler = (e) => {
         if (e.data) {
-            const parsedData = JSON.parse(e.data);
-            props.onQRCode(parsedData);
+            try {
+                const parsedData = JSON.parse(e.data);
+                props.onQRCode(parsedData);
+            } catch (error) {
+                props.onQRCode('error');
+            }
         }
     };
 

@@ -8,8 +8,10 @@ import GradientWrapper from '../../components/GradientWrapper/GradientWrapper';
 
 import HomeScreen from '../../screens/HomeScreen/HomeScreen';
 import AuthenticationScreen from '../../screens/AuthenticationScreen/AuthenticationScreen';
-import ContentTypesScreen from '../../screens/ContentTypesScreen/ContentTypesScreen';
+import ContentTypesScreen, { contentTypesScreenOptions } from '../../screens/ContentTypesScreen/ContentTypesScreen';
 import ContentTypeObjectsScreen, { contentTypeObjectsScreenOptions } from '../../screens/ContentTypeObjectsScreen/ContentTypeObjectsScreen';
+import SearchResultsObjectsScreen, { searchResultsObjectsScreenOptions } from '../../screens/SearchResultsObjectsScreen/SearchResultsObjectsScreen';
+import SearchResultObjectScreen, { searchResultObjectScreenOptions } from '../../screens/SearchResultObjectScreen/SearchResultObjectScreen';
 import ObjectScreen, { contentObjectScreenOptions } from '../../screens/ObjectScreen/ObjectScreen';
 
 import CustomDrawer from '../../components/CustomDrawer/CustomDrawer';
@@ -57,45 +59,58 @@ const AuthenticationStackScreen = () => (
     </Stack.Navigator>
 );
 
-const HomeStackScreen = () =>
-    /* @TODO defaults */
-    (
+const HomeStackScreen = () => (
+    <Stack.Screen
+        name="HomeScreen"
+        component={HomeScreen}
+        options={{
+            title: 'Flotiq Mobile Demo App',
+            headerTitleStyle: {
+                marginLeft: 0,
+            },
+        }}
+    />
+);
+
+const ContentTypesStackScreen = () => (
+    <>
         <Stack.Screen
-            name="HomeScreen"
-            component={HomeScreen}
-            options={{
-                title: 'Flotiq Mobile Demo App',
-                headerTitleStyle: {
-                    marginLeft: 0,
-                },
-            }}
+            name="ContentTypesScreen"
+            component={ContentTypesScreen}
+            options={contentTypesScreenOptions}
         />
-    );
-const ContentTypesStackScreen = () =>
-    /* @TODO defaults */
-    (
-        <>
-            <Stack.Screen
-                name="ContentTypesScreen"
-                component={ContentTypesScreen}
-                options={{
-                    title: 'Content Types List',
-                }}
-            />
-            <Stack.Screen
-                title="Content Type Objects"
-                name="ContentTypeObjectsScreen"
-                component={ContentTypeObjectsScreen}
-                options={contentTypeObjectsScreenOptions}
-            />
-            <Stack.Screen
-                title="Object Details"
-                name="ObjectScreen"
-                component={ObjectScreen}
-                options={contentObjectScreenOptions}
-            />
-        </>
-    );
+        <Stack.Screen
+            title="Content Type Objects"
+            name="ContentTypeObjectsScreen"
+            component={ContentTypeObjectsScreen}
+            options={contentTypeObjectsScreenOptions}
+        />
+        <Stack.Screen
+            title="Object Details"
+            name="ObjectScreen"
+            component={ObjectScreen}
+            options={contentObjectScreenOptions}
+        />
+    </>
+);
+
+const SearchStackScreen = () => (
+    <>
+        <Stack.Screen
+            title="Search Results"
+            name="SearchResultsObjectsScreen"
+            component={SearchResultsObjectsScreen}
+            options={searchResultsObjectsScreenOptions}
+        />
+        <Stack.Screen
+            title="Search Result"
+            name="SearchResultObjectScreen"
+            component={SearchResultObjectScreen}
+            options={searchResultObjectScreenOptions}
+        />
+    </>
+);
+
 export const rootStackNavigator = (props) => (
     <Stack.Navigator
         initialRouteName="HomeScreen"
@@ -103,6 +118,7 @@ export const rootStackNavigator = (props) => (
     >
         {HomeStackScreen()}
         {ContentTypesStackScreen()}
+        {SearchStackScreen()}
     </Stack.Navigator>
 );
 

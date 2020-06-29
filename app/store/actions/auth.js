@@ -1,5 +1,7 @@
 import AsyncStorage from '@react-native-community/async-storage';
-import { API_URL, API_PREFIX } from '../../helpers/constants/global';
+import ApiTokenError from '../../api/http/errors/apiTokenError';
+import * as httpQuery from '../../api/http/rquests/auth';
+import { API_URL } from '../../helpers/constants/global';
 import { parseResponseMessage } from '../../helpers/parseHttpResponse';
 
 export const SET_API_TOKEN = 'SET_API_TOKEN';
@@ -17,27 +19,26 @@ export const setApiToken = (apiToken, apiUrl = null) => async (dispatch) => {
             await AsyncStorage.setItem('flotiqApiUrl', apiUrl);
         }
         const url = apiUrl || API_URL;
-        const response = await fetch(
-            `${url}${API_PREFIX}internal/contenttype?auth_token=${apiToken}`,
-        );
+        const result = await httpQuery.checkApiToken(apiToken, url);
 
-        if (response.status === 200) {
-            await AsyncStorage.setItem('flotiqApiKey', apiToken);
-            dispatch({
-                type: SET_API_TOKEN,
-                apiToken,
-                errorMessage: null,
-            });
-        } else {
-            const respData = await response.json();
-            dispatch({
-                type: SET_API_TOKEN,
-                apiToken: null,
-                errorMessage: parseResponseMessage(respData),
-            });
+        if (!result) {
+            dispatch(setFetchingFailure('There was an error!'));
+            return;
         }
+
+        await AsyncStorage.setItem('flotiqApiKey', apiToken);
+        dispatch({
+            type: SET_API_TOKEN,
+            apiToken,
+            errorMessage: null,
+        });
     } catch (error) {
-        dispatch(setFetchingFailure(parseResponseMessage(error)));
+        dispatch({
+            type: SET_API_TOKEN,
+            apiToken: null,
+            errorMessage: error.message,
+        });
+        dispatch(setFetchingFailure(error.message));
     }
 };
 
@@ -54,24 +55,24 @@ export const autoAuthorization = () => async (dispatch) => {
                 return;
             }
             const apiUrl = await getApiUrl();
-            const response = await fetch(
-                `${apiUrl}${API_PREFIX}internal/contenttype?auth_token=${apiToken}`,
-            );
+            const result = await httpQuery.autoAuthorization(apiUrl);
 
-            if (response.status === 200) {
+            if (result) {
                 dispatch({
                     type: SET_API_TOKEN,
                     apiToken,
                     errorMessage: null,
                 });
-            } else {
-                dispatch(removeApiToken());
             }
         } else {
             dispatch(removeApiToken());
         }
     } catch (error) {
-        dispatch(setFetchingFailure(parseResponseMessage(error)));
+        if (error instanceof ApiTokenError) {
+            dispatch(removeApiToken());
+        } else {
+            dispatch(setFetchingFailure(error.message));
+        }
     }
 };
 

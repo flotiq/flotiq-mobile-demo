@@ -21,6 +21,9 @@ const CustomBtn = (props) => (
         }}
         buttonStyle={{ ...styles.btn, ...props.buttonStyle }}
         titleStyle={{ ...styles.title, ...props.titleStyle }}
+        disabled={props.disabled}
+        loading={props.loading}
+        loadingProps={{ ...styles.loader, ...props.loaderProps }}
     />
 );
 

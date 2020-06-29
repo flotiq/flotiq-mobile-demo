@@ -5,5 +5,6 @@ import {
 
 export const APP_NAME = app_name;
 export const APP_VERSION = app_version;
+export const MAIN_URL = 'https://api.flotiq.com';
 export const API_URL = 'https://api.flotiq.com/api';
 export const API_PREFIX = '/v1/';

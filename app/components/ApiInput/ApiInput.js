@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
+import { useSelector } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Input } from 'react-native-elements';
 import CustomBtn from '../CustomBtn/CustomBtn';
-import { useSelector } from 'react-redux';
 
 import styles from './styles';
 
@@ -34,7 +34,7 @@ const ApiInput = (props) => {
             <CustomBtn
                 buttonStyle={styles.confirmBtn}
                 title="Confirm"
-                titleStyle={{textAlign: 'center'}}
+                titleStyle={styles.confirmBtnTitle}
                 onPressBtn={() => props.onClick(provideToken)}
             />
         </View>

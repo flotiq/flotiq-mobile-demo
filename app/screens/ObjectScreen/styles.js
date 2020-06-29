@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, Dimensions, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
@@ -29,6 +29,10 @@ const styles = StyleSheet.create({
     nestedSubtitleView: {
         fontSize: 16,
         fontFamily: 'Roboto-Regular',
+    },
+    headerOptionsTitle: {
+        width: Dimensions.get('window').width - 120,
+        marginLeft: Platform.OS === 'ios' ? 50 : 'auto',
     },
 });
 

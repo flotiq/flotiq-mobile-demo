@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { View, ScrollView, Alert, ActivityIndicator, Linking } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { Text } from 'react-native-elements';
 import SplashScreen from 'react-native-splash-screen';
 
 import * as authActions from '../../store/actions/auth';
+import { missingApiKeyAlert, ivalidApiKeyAlert } from '../../helpers/alertsHelper';
 
+import IndicatorOverlay from '../../components/Indicators/IndicatorOverlay';
 import ApiInput from '../../components/ApiInput/ApiInput';
 import Scanner from '../../components/Scanner/Scanner';
 import CustomBtn from '../../components/CustomBtn/CustomBtn';
-
-import { missingApiKeyAlert, ivalidApiKeyAlert } from '../../helpers/alertsHelper';
 
 import styles from './styles';
 
@@ -77,12 +77,6 @@ const AuthenticationScreen = (props) => {
         }
     }, [authToken, errorMessage, navigateTo]);
 
-    const loader = () => (
-        <View style={[styles.indicatorContainer, styles.indicatorHhorizontal]}>
-            <ActivityIndicator size="large" color="#000" />
-        </View>
-    );
-
     const confirmHandle = async (apiToken, apiUrl = null) => {
         if (apiToken) {
             setIsLoading(true);
@@ -97,11 +91,13 @@ const AuthenticationScreen = (props) => {
         hideScanner();
         if (qrData.apiKey) {
             confirmHandle(qrData.apiKey, qrData.apiUrl);
+        } else {
+            confirmHandle(null);
         }
     };
 
     if (isLoading) {
-        return loader();
+        return <IndicatorOverlay />;
     }
     return (
         <ScrollView contentContainerStyle={styles.scrollView}>
@@ -114,7 +110,9 @@ const AuthenticationScreen = (props) => {
                                 <Text h2 h2Style={styles.h2Style}>Demo App</Text>
                             </View>
                             <View style={styles.body}>
-                                <Text style={styles.paragraph}>You can use this demo to look at your content from Flotiq Headless CMS</Text>
+                                <Text style={styles.paragraph}>
+                                    You can use this demo to look at your content from Flotiq Headless CMS
+                                </Text>
                             </View>
                             <ApiInput onClick={confirmHandle} />
                             <Text style={styles.desctiption}>Qr scan QR code</Text>

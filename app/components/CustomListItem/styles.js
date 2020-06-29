@@ -8,10 +8,25 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginHorizontal: 30,
     },
-    defaultBackground: {
+    listItemContainer: {
+        padding: 10,
         borderColor: Colors.accent4,
         borderWidth: 2,
         backgroundColor: 'transparent',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexDirection: 'row',
+    },
+    title: {
+        width: '85%',
+        fontFamily: 'Roboto-Medium',
+        fontSize: 18,
+        color: '#000000',
+    },
+    subtitle: {
+        fontFamily: 'Roboto-Regular',
+        fontSize: 16,
+        color: '#333333',
     },
 });
 
