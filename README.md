@@ -34,7 +34,7 @@ Then start building your own app, based on the Flotiq Mobile Expo.
 ### Xcode
 - The app has been successfuly built with Xcode 11.4.
 
-### React-Native - PROJECT
+### React-Native
 (`nodejs` is must.)
 
 - Clone this repository
@@ -43,10 +43,10 @@ Then start building your own app, based on the Flotiq Mobile Expo.
     git clone https://github.com/flotiq/flotiq-mobile-demo
     ```
     
-and run:
-```
-npm install
-```
+- Install node modules:
+    ```
+    npm install
+    ```
 
 - Turn on the simulator:
    - Android - follow [documentation](https://developer.android.com/studio/debug/dev-options) for instructions, 
