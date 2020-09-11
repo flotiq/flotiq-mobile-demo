@@ -5,6 +5,7 @@ import { SET_CONTENT_TYPES,
     CLEAR_CONTENT_TYPES,
     SET_CONTENT_TYPE_OBJECTS,
     CLEAR_CONTENT_TYPE_OBJECTS,
+    SET_RELATIONS_OBJECTS,
     SET_CONTENT_OBJECT,
     CLEAR_CONTENT_OBJECT,
     RESET_CONTENT_OBJECT,
@@ -28,6 +29,7 @@ const initialState = {
     withRichTextProperties: null,
     totalPages: [],
     ctdTotalPages: null,
+    relations: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -87,6 +89,26 @@ const reducer = (state = initialState, action) => {
             object: deleteDependsObjects,
             isFetching: false,
             objectsErrorMessage: null,
+        };
+    case SET_RELATIONS_OBJECTS:
+        // eslint-disable-next-line no-case-declarations
+        let updatedRelations = state.relations;
+        if (state.relations) {
+            if (state.relations[action.contentObjectName]) {
+                const prep = { [action.contentObjectName]: { ...state.relations[action.contentObjectName], ...action.contentRelationObjects } };
+                updatedRelations = { ...state.relations, ...prep };
+            } else {
+                const prep = { [action.contentObjectName]: action.contentRelationObjects };
+                updatedRelations = { ...state.relations, ...prep };
+            }
+        } else {
+            updatedRelations = { [action.contentObjectName]: action.contentRelationObjects };
+        }
+        return {
+            ...state,
+            relations: updatedRelations,
+            isFetching: false,
+            // objectsErrorMessage: null,
         };
     case SET_CTD_TOTAL_PAGE:
         return {
@@ -185,6 +207,7 @@ const persistConfig = {
         'ctdTotalPages',
         'partOfTitleProperties',
         'withRichTextProperties',
+        'relations',
     ],
 };
 

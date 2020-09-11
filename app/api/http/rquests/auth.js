@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import ApiTokenError from '../errors/apiTokenError';
 import { API_URL, API_PREFIX } from '../../../helpers/constants/global';
-import { parseResponseMessage, checkApiTokenIsValid } from '../../../helpers/parseHttpResponse';
+import { parseResponseMessage, checkApiTokenIsValid } from '../errors/helpers/parseMessage';
 
 export const checkApiToken = async (apiToken, apiUrl = null) => {
     const url = apiUrl || API_URL;

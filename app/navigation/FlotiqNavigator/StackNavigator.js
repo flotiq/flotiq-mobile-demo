@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Platform } from 'react-native';
+import { Platform, Dimensions } from 'react-native';
 import { useSelector } from 'react-redux';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -20,8 +20,9 @@ const Stack = createStackNavigator();
 
 const Drawer = createDrawerNavigator();
 
+const WIDTH = Dimensions.get('window').width;
 const defaultStatusBarHeight = Platform.OS === 'android' ? 120 : 90;
-const defaultStatusBarLeftMargin = Platform.OS === 'android' ? -35 : 35;
+const defaultStatusBarLeftMargin = Platform.OS === 'android' ? -35 : 25;
 const defaultScreenOptions = () => (
     {
         headerTintColor: '#fff',
@@ -30,6 +31,7 @@ const defaultScreenOptions = () => (
             fontSize: 20,
             paddingHorizontal: 20,
             marginLeft: defaultStatusBarLeftMargin,
+            width: WIDTH - 100,
         },
         headerBackground: () => (
             <GradientWrapper />

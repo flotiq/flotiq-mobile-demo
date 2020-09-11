@@ -177,7 +177,7 @@ const ContentTypesScreen = (props) => {
         >
             <CustomListItem
                 element={item.item}
-                title={item.item.name}
+                title={item.item.label || item.item.name}
                 onPress={contentTypePressHandle}
             />
         </View>
@@ -241,7 +241,7 @@ export const contentTypesScreenOptions = ({ route, navigation }) => (
                 type="material"
                 color="#ffffff"
                 containerStyle={{ marginRight: 20 }}
-                size={18}
+                size={16}
             />
         ),
     }

@@ -32,9 +32,11 @@
 		<dict/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Using for scanning QR code</string>
+	<string>Using for scanning QR code and taking photos for uploading images to Flotiq service</string>
 	<key>NSMainNibFile</key>
 	<string>LaunchScreen</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Using for uploading images to Flotiq service</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto-Medium.ttf</string>

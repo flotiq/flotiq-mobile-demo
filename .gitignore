@@ -62,5 +62,6 @@ buck-out/
 android/app/my-upload-key.keystore
 android/app/release/
 android/app/private_key.pepk
+android/app/src/main/private_key.pepk
 
 open-api-schema.json

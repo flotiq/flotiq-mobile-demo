@@ -1,36 +1,44 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { Icon } from 'react-native-elements';
+import SwipeableRow from './SwipeableRow/SwipeableRow';
 
 import TouchableFeedback from '../TouchableFeedback/TouchableFeedback';
 import styles from './styles';
 
-const CustomListItem = React.memo(({ element, onPress, title }) => (
+const CustomListItem = React.memo(({ element, onPress, onEdit, onDelete, title, isSwipeable, renderLeft }) => (
     element
         ? (
-            <View
-                style={styles.container}
+            <SwipeableRow
+                renderLeft={renderLeft}
+                onSwipeLeft={onEdit}
+                onSwipeRight={onDelete}
+                isSwipeable={isSwipeable}
             >
-                <TouchableFeedback
-                    onPress={() => onPress(element)}
+                <View
+                    style={styles.container}
                 >
-                    <View
-                        style={styles.listItemContainer}
+                    <TouchableFeedback
+                        onPress={() => onPress(element)}
                     >
-                        <Text
-                            style={styles.title}
-                            numberOfLines={1}
+                        <View
+                            style={styles.listItemContainer}
                         >
-                            {title || element.id}
-                        </Text>
+                            <Text
+                                style={styles.title}
+                                numberOfLines={1}
+                            >
+                                {title || element.id}
+                            </Text>
 
-                        <Icon
-                            name="chevron-right"
-                            color="#000000"
-                        />
-                    </View>
-                </TouchableFeedback>
-            </View>
+                            <Icon
+                                name="chevron-right"
+                                color="#000000"
+                            />
+                        </View>
+                    </TouchableFeedback>
+                </View>
+            </SwipeableRow>
         )
         : null
 ));

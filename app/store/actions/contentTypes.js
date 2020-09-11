@@ -11,6 +11,7 @@ export const FETCHING_OBJECTS_FAILURE = 'FETCHING_OBJECTS_FAILURE';
 export const FETCHING_OBJECT_FAILURE = 'FETCHING_OBJECT_FAILURE';
 export const SET_TOTAL_PAGE = 'SET_TOTAL_PAGE';
 export const SET_CTD_TOTAL_PAGE = 'SET_CTD_TOTAL_PAGE';
+export const SET_RELATIONS_OBJECTS = 'SET_RELATIONS_OBJECTS';
 
 export const setContentTypeDefinitions = (types) => ({
     type: SET_CONTENT_TYPES,
@@ -62,6 +63,15 @@ export const clearContentObject = (ctoName, objectId) => async (dispatch) => {
         type: CLEAR_CONTENT_OBJECT,
         ctoName,
         objectId,
+    });
+};
+
+export const setRelationsObjects = (contentTypeName, objects) => async (dispatch) => {
+    dispatch({
+        type: SET_RELATIONS_OBJECTS,
+        contentObjectName: contentTypeName,
+        contentRelationObjects: objects,
+        objectsErrorMessage: null,
     });
 };
 
