@@ -56,7 +56,7 @@ and run:
 
     Sometimes there is an issue with starting `metro` server. In separate window run it manually:
 
-    `npx react-native run`
+    `npx react-native start`
 
 - You can also start the project directly from Android Studio or Xcode.
 
