@@ -39,20 +39,27 @@ Then start building your own app, based on the Flotiq Mobile Expo.
 
 - Clone this repository
     
-    `git clone https://github.com/flotiq/flotiq-mobile-demo`
+    ```
+    git clone https://github.com/flotiq/flotiq-mobile-demo
+    ```
     
 and run:
-
-    `npm install`
+```
+npm install
+```
 
 - Turn on the simulator:
    - Android - follow [documentation](https://developer.android.com/studio/debug/dev-options) for instructions, 
    - iOS - follow [documentation](https://developer.apple.com/documentation/xcode/running_your_app_in_the_simulator_or_on_a_device) for instructions.
    
-- Run project:
-
-    `npx react-native run-android`
-    `npx react-native run-ios`
+- Run the project on Android
+    ```
+    npx react-native run-android
+    ```
+- Run the project on iOS
+    ```
+    npx react-native run-ios
+    ```
 
     Sometimes there is an issue with starting `metro` server. In separate window run it manually:
 
