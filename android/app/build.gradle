@@ -133,10 +133,12 @@ android {
         applicationId "com.flotiqmobiledemo"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "0.1.2"
+        versionCode 4
+        versionName "0.2.0"
         missingDimensionStrategy 'react-native-camera', 'general'
         multiDexEnabled true
+
+        vectorDrawables.useSupportLibrary = true
     }
     splits {
         abi {

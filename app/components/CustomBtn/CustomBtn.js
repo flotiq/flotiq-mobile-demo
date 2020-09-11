@@ -19,11 +19,12 @@ const CustomBtn = (props) => (
             angle: 50,
             angleCenter: { x: 0.7, y: 1 },
         }}
-        buttonStyle={{ ...styles.btn, ...props.buttonStyle }}
-        titleStyle={{ ...styles.title, ...props.titleStyle }}
+        buttonStyle={[styles.btn, props.buttonStyle]}
+        titleStyle={[styles.title, props.titleStyle]}
         disabled={props.disabled}
         loading={props.loading}
         loadingProps={{ ...styles.loader, ...props.loaderProps }}
+        containerStyle={props.btnContainerStyle}
     />
 );
 

@@ -30,6 +30,7 @@ const ApiInput = (props) => {
                 )}
                 onChangeText={(text) => setApiValue(text)}
                 onSubmitEditing={() => props.onClick(provideToken)}
+                secureTextEntry
             />
             <CustomBtn
                 buttonStyle={styles.confirmBtn}

@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { FlatList, SafeAreaView } from 'react-native';
+import React, { useEffect, useState, useCallback } from 'react';
+import { Alert, FlatList, SafeAreaView } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import NetInfo from '@react-native-community/netinfo';
 import Toast from 'react-native-simple-toast';
 import { Icon } from 'react-native-elements';
+import 'react-native-get-random-values';
+import { v4 as uuidv4 } from 'uuid';
 
 import { CommonActions, useRoute } from '@react-navigation/native';
 import { useInfiniteQuery, queryCache } from 'react-query';
@@ -13,9 +15,16 @@ import ApiTokenError from '../../api/http/errors/apiTokenError';
 import ApiNoDataError from '../../api/http/errors/apiNoDataError';
 import * as authTypesActions from '../../store/actions/auth';
 import * as contentTypesActions from '../../store/actions/contentTypes';
-import { fetchingDataErrorAlert } from '../../helpers/alertsHelper';
+import { fetchingDataErrorAlert,
+    confirmDeleteAction,
+    postDataError } from '../../helpers/alertsHelper';
 import { transformToHumanRedeableTitle,
     transformToArrayForListData } from '../../helpers/contentTypesHelper';
+import { getDefinitionData } from '../../helpers/definitionObjectsHelper';
+
+import FloatButton from '../../components/FloatButton/FloatButton';
+import FormModal from '../../components/FormModal/FormModal';
+import NoData from '../../components/NoData/NoData';
 
 import Search from '../../components/Search/Search';
 import IndicatorOverlay from '../../components/Indicators/IndicatorOverlay';
@@ -24,16 +33,21 @@ import ListFooterIndicator from '../../components/Indicators/List/Footer/ListFoo
 import CustomListItem from '../../components/CustomListItem/CustomListItem';
 
 const ContentTypeObjectsScreen = (props) => {
-    const { contentTypeName, partOfTitleProps, withReachTextProps, refetchData } = props.route.params;
+    const { contentTypeName, partOfTitleProps, withReachTextProps, refetchData, contentTypeLabel } = props.route.params;
+    const contentTypesDefinitions = useSelector((state) => state.contentTypes.definitions);
     const contentTypeObjects = useSelector((state) => state.contentTypes.objects);
     const totalPagesMax = useSelector((state) => state.contentTypes.totalPages);
     const dispatch = useDispatch();
 
     const [isLoading, setIsLoading] = useState(true);
+    const [isUpdate, setIsUpdate] = useState();
     const [pageNr, setPageNr] = useState(1);
 
     const route = useRoute();
     const [searchBox, setSearchBox] = useState(false);
+
+    const [formModalVisibility, setFormModalVisibility] = useState(false);
+    const [editContentId, setEditContentId] = useState(null);
 
     useEffect(() => {
         if (route && route.searchBoxVisible) {
@@ -144,6 +158,17 @@ const ContentTypeObjectsScreen = (props) => {
         }
     }, [props.navigation, netInfo.isInternetReachable, refetchData, refetch]);
 
+    const returnListData = useCallback(() => {
+        const dataIsNotEmpty = data && data.length > 0;
+        const persistedData = contentTypeObjects && contentTypeObjects[contentTypeName];
+        if (persistedData && !netInfo.isInternetReachable) {
+            const transfromedData = transformToArrayForListData(contentTypeObjects, contentTypeName);
+            return transfromedData;
+        }
+        if (dataIsNotEmpty) return data;
+        return [];
+    }, [data, contentTypeName, contentTypeObjects, netInfo.isInternetReachable]);
+
     const objectPressHandle = (item) => {
         props.navigation.navigate({
             name: 'ObjectScreen',
@@ -152,6 +177,7 @@ const ContentTypeObjectsScreen = (props) => {
                 ctoName: contentTypeName,
                 objectLabel: transformToHumanRedeableTitle(item, partOfTitleProps),
                 withReachTextProps,
+                partOfTitleProps,
             },
         });
     };
@@ -160,14 +186,21 @@ const ContentTypeObjectsScreen = (props) => {
         item.item.data.map((el) => (
             <CustomListItem
                 key={`${el.id}-cli}`}
+                isSwipeable
                 element={el}
                 title={transformToHumanRedeableTitle(el, partOfTitleProps)}
                 onPress={objectPressHandle}
+                renderLeft={contentTypeName !== '_media'}
+                onEdit={() => {
+                    setEditContentId(el.id);
+                    setFormModalVisibility(true);
+                }}
+                onDelete={() => onDeleteHandler(el.id)}
             />
         ))
     ) : null);
 
-    if (isLoading || ((isFetching || status === 'loading')
+    if (isLoading || isUpdate || ((isFetching || status === 'loading')
         && (!contentTypeObjects || !contentTypeObjects[contentTypeName]))) {
         return <IndicatorOverlay />;
     }
@@ -216,19 +249,60 @@ const ContentTypeObjectsScreen = (props) => {
         props.navigation.dispatch(CommonActions.setParams({ searchBoxVisible: false }));
     };
 
-    const returnListData = () => {
-        const dataIsNotEmpty = data && data.length > 0;
-        const persistedData = contentTypeObjects && contentTypeObjects[contentTypeName];
-        if (persistedData && !netInfo.isInternetReachable) {
-            return transformToArrayForListData(contentTypeObjects, contentTypeName);
+    const onPressSaveHandler = async (formData) => {
+        const isToUpdate = formData.type && formData.type === 'upload';
+        const response = formData;
+        if (!isToUpdate) {
+            const genUuid = uuidv4();
+            response.id = editContentId || `${contentTypeName}-${genUuid}`;
         }
+        /* TODO: think about action queue - offline state */
 
-        if (dataIsNotEmpty) return data;
-        return [];
+        try {
+            setIsUpdate(true);
+            if (isToUpdate) {
+                await httpCT.uploadMedia(response.data);
+            } else if (editContentId) {
+                await httpCT.updateContentObject(contentTypeName, editContentId, response);
+
+                setEditContentId(null);
+            } else {
+                await httpCT.createContentObject(contentTypeName, response);
+            }
+            setFormModalVisibility(!formModalVisibility);
+            setIsUpdate(false);
+            refetch();
+        } catch (error) {
+            postDataError(error.message).then(async (r) => {
+                if (r === 'OK') {
+                    setIsUpdate(false);
+                }
+            });
+        }
     };
 
+    const onDeleteHandler = async (ctoId) => {
+        if (!ctoId) return;
+        /* TODO: think about action queue - offline state */
+        try {
+            confirmDeleteAction('Are you sure?').then(async (r) => {
+                if (r === 'CANCEL') return;
+                setIsUpdate(true);
+                await httpCT.removeContentObject(contentTypeName, ctoId);
+                setIsUpdate(false);
+                refetch();
+            });
+        } catch (error) {
+            Alert.alert(
+                'Error!',
+                error.message,
+            );
+            setIsUpdate(false);
+        }
+    };
+    const convertedData = returnListData();
     return (
-        <SafeAreaView>
+        <SafeAreaView style={{ flex: 1, margin: 0, padding: 0 }}>
             {(route.params && route.params.searchBoxVisible)
                 && (
                     <Search
@@ -237,22 +311,48 @@ const ContentTypeObjectsScreen = (props) => {
                         preChosenCT={contentTypeName}
                     />
                 )}
-            <FlatList
-                keyExtractor={(item) => item.data[0].id}
-                data={returnListData()}
-                renderItem={renderItem}
-                getItemLayout={getItemLayout}
-                onEndReached={onEndReachedHandler}
-                onEndReachedThreshold={0.1}
-                initialNumToRender={20}
-                // maxToRenderPerBatch={1}
-                ListFooterComponent={renderListLoader}
-                ListHeaderComponent={headerListLoader}
-                refreshing={status === 'loading' && !isFetching}
-                onRefresh={() => refetch()}
-                // windowSize={12}
-                // removeClippedSubviews
+            {(convertedData && convertedData[0] && (convertedData[0].data.length > 0))
+
+                ? (
+                    <FlatList
+                        keyExtractor={(item) => item.data[0].id}
+                        data={convertedData}
+                        renderItem={renderItem}
+                        getItemLayout={getItemLayout}
+                        onEndReached={onEndReachedHandler}
+                        onEndReachedThreshold={0.1}
+                        initialNumToRender={20}
+                        ListFooterComponent={renderListLoader}
+                        ListHeaderComponent={headerListLoader}
+                        refreshing={status === 'loading' && !isFetching}
+                        onRefresh={() => refetch()}
+                    />
+                )
+                : (
+                    <NoData
+                        title="Create your first"
+                        message="Object of type"
+                        dataType={contentTypeLabel}
+                    />
+                )}
+            <FloatButton
+                onPressFloatBtn={() => setFormModalVisibility(!formModalVisibility)}
             />
+            {(formModalVisibility && contentTypesDefinitions && contentTypeName)
+                && (
+                    <FormModal
+                        edit={editContentId}
+                        isModalVisible={formModalVisibility}
+                        onPressSave={onPressSaveHandler}
+                        onPressCancel={() => {
+                            setFormModalVisibility(!formModalVisibility);
+                            setEditContentId(null);
+                        }}
+                        dataName={contentTypeName}
+                        data={getDefinitionData(contentTypesDefinitions)}
+                        partOfTitleProps={partOfTitleProps}
+                    />
+                )}
         </SafeAreaView>
     );
 };
@@ -274,7 +374,7 @@ export const contentTypeObjectsScreenOptions = ({ route, navigation }) => {
                     type="material"
                     color="#ffffff"
                     containerStyle={{ marginRight: 20 }}
-                    size={18}
+                    size={16}
                 />
             ),
         }

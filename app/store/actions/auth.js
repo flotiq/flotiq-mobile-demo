@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import ApiTokenError from '../../api/http/errors/apiTokenError';
 import * as httpQuery from '../../api/http/rquests/auth';
 import { API_URL } from '../../helpers/constants/global';
-import { parseResponseMessage } from '../../helpers/parseHttpResponse';
+import { parseResponseMessage } from '../../api/http/errors/helpers/parseMessage';
 
 export const SET_API_TOKEN = 'SET_API_TOKEN';
 export const CLEAR_ERROR = 'CELAR_ERROR';

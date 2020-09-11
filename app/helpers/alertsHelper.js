@@ -60,3 +60,43 @@ export const fetchingDataErrorAlert = (errorMessage) => {
         );
     });
 };
+
+export const confirmDeleteAction = (message) => {
+    return new Promise((resolve) => {
+        Alert.alert(
+            'Delete',
+            message,
+            [
+                {
+                    text: 'Ok',
+                    onPress: () => {
+                        resolve('OK');
+                    },
+                },
+                {
+                    text: 'Cancel',
+                    onPress: () => {
+                        resolve('CANCEL');
+                    },
+                },
+            ],
+        );
+    });
+};
+
+export const postDataError = (message, title = 'Error!') => {
+    return new Promise((resolve) => {
+        Alert.alert(
+            title,
+            message,
+            [
+                {
+                    text: 'Ok',
+                    onPress: () => {
+                        resolve('OK');
+                    },
+                },
+            ],
+        );
+    });
+};
