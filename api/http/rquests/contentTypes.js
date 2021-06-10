@@ -31,18 +31,17 @@ export const fetchContentTypes = async () => {
 
 export const fetchContentTypeObjects = async (ctoName, pageNr = 1) => {
     const url = `${CONTENT_URL}/${ctoName}?page=${pageNr}`;
-    console.log(url);
 
     const response = await fetchData(url);
     if (!response || !response.data) {
         throw new ApiNoDataError(`Missing data for ${ctoName}!`);
     }
-    const nextPageCoursor = response.total_pages >= pageNr + 1 ? pageNr + 1 : false;
+    const nextCursor = response.total_pages >= pageNr + 1 ? pageNr + 1 : false;
 
     return {
         data: response.data,
         pageParams: {
-            nextPage: nextPageCoursor,
+            nextPage: nextCursor,
             totalPages: response.total_pages,
         },
     };

@@ -78,73 +78,75 @@ const ContentTypeObjectsScreen = (props) => {
         });
     }, []);
 
-    const {
+    let {
         status,
         data,
         refetch,
         isFetching,
-        fetchMore,
-    } = useInfiniteQuery(contentTypeName, () => httpCT.fetchContentTypeObjects(contentTypeName), {
-        getFetchMore: (lastGroup) => lastGroup.nextPage,
-        retry: 1,
-        // eslint-disable-next-line consistent-return
-        initialData: () => {
-            const persistedData = contentTypeObjects && contentTypeObjects[contentTypeName];
-            if (persistedData && !netInfo.isInternetReachable) {
-                return transformToArrayForListData(contentTypeObjects, contentTypeName);
-            }
-        },
-        onError: (err) => {
-            const noPersistedData = !contentTypeObjects || !contentTypeObjects[contentTypeName];
-            if (netInfo.isInternetReachable) {
-                if (err instanceof ApiTokenError) {
-                    dispatch(authTypesActions.validateApiToken(false));
-                    return;
+        fetchNextPage,
+    } = useInfiniteQuery(
+        contentTypeName,
+        ({ pageParam = 1 }) => httpCT.fetchContentTypeObjects(contentTypeName, pageParam),
+        {
+            retry: 1,
+            getNextPageParam: (lastPage) => lastPage.nextCursor,
+            // eslint-disable-next-line consistent-return
+            initialData: () => {
+                const persistedData = contentTypeObjects && contentTypeObjects[contentTypeName];
+                if (persistedData && !netInfo.isInternetReachable) {
+                    return transformToArrayForListData(contentTypeObjects, contentTypeName);
                 }
-                if (err instanceof ApiNoDataError) {
-                    dispatch(contentTypesActions.clearContentTypeObjects(contentTypeName));
+            },
+            onError: (err) => {
+                const noPersistedData = !contentTypeObjects || !contentTypeObjects[contentTypeName];
+                if (netInfo.isInternetReachable) {
+                    if (err instanceof ApiTokenError) {
+                        dispatch(authTypesActions.validateApiToken(false));
+                        return;
+                    }
+                    if (err instanceof ApiNoDataError) {
+                        dispatch(contentTypesActions.clearContentTypeObjects(contentTypeName));
+                        fetchingDataErrorAlert(err.message).then(() => {
+                            queryClient.invalidateQueries(contentTypeName);
+                            props.navigation.navigate({
+                                name: 'ContentTypesScreen',
+                                params: {
+                                    refetchCTData: true,
+                                },
+                            });
+                        });
+                        return;
+                    }
+                }
+
+                if (noPersistedData) {
                     fetchingDataErrorAlert(err.message).then(() => {
                         queryClient.invalidateQueries(contentTypeName);
-                        props.navigation.navigate({
-                            name: 'ContentTypesScreen',
-                            params: {
-                                refetchCTData: true,
-                            },
-                        });
+                        props.navigation.navigate('ContentTypesScreen');
                     });
-                    return;
+                } else {
+                    Toast.showWithGravity(err.message, Toast.LONG, Toast.CENTER);
                 }
-            }
-
-            if (noPersistedData) {
-                fetchingDataErrorAlert(err.message).then(() => {
-                    queryClient.invalidateQueries(contentTypeName);
-                    props.navigation.navigate('ContentTypesScreen');
-                });
-            } else {
-                Toast.showWithGravity(err.message, Toast.LONG, Toast.CENTER);
-            }
-        },
-        onSuccess: (dat) => {
-            dat.pageParams = dat.pages[0].pageParams;
-            delete dat.pages[0].pageParams;
-            const dataIndex = dat.pages.length - 1;
-            const dataExists = dat && dat[dataIndex] && dat[dataIndex].data;
-            if (dataExists) {
-                const lastData = dat[dataIndex];
-                if (Array.isArray(lastData.data) && (lastData.data.length > 0)) {
-                    dispatch(contentTypesActions.setContentTypeObjects(contentTypeName, dat));
-                    dispatch(
-                        contentTypesActions.setContentTypeObjectsTotalPages(
-                            contentTypeName,
-                            lastData.totalPages,
-                        ),
-                    );
+            },
+            onSuccess: (dat) => {
+                const dataIndex = dat.pages.length - 1;
+                if (!dat.pageParams || Array.isArray(dat.pageParams)) {
+                    // eslint-disable-next-line no-param-reassign
+                    dat.pageParams = dat.pages[dataIndex].pageParams;
                 }
-            }
-            return dat;
+                // eslint-disable-next-line no-param-reassign
+                delete dat.pages[dataIndex].pageParams;
+                dispatch(contentTypesActions.setContentTypeObjects(contentTypeName, dat));
+                dispatch(
+                    contentTypesActions.setContentTypeObjectsTotalPages(
+                        contentTypeName,
+                        dat.pageParams.totalPages,
+                    ),
+                );
+                return dat;
+            },
         },
-    });
+    );
 
     useEffect(() => {
         if (!isFetching && isLoading && (data || contentTypeObjects)) {
@@ -168,7 +170,9 @@ const ContentTypeObjectsScreen = (props) => {
     useEffect(() => {
         if (refetchData) {
             props.navigation.dispatch(CommonActions.setParams({ refetchData: false }));
-            if (netInfo.isInternetReachable) refetch();
+            if (netInfo.isInternetReachable) {
+                refetch();
+            }
         }
     }, [props.navigation, netInfo.isInternetReachable, refetchData, refetch]);
 
@@ -238,14 +242,17 @@ const ContentTypeObjectsScreen = (props) => {
         return 1;
     };
 
-    const onEndReachedHandler = () => {
-        const pageLimit = getTotalPages();
+    const onEndReachedHandler = async () => {
+        const pageLimit = Math.max(getTotalPages(), data.pageParams.totalPages);
         const isNotLoadingData = status !== 'loading' && !isFetching;
         if (netInfo.isInternetReachable && pageLimit && isNotLoadingData) {
             if ((pageNr + 1) <= pageLimit || (pageNr === pageLimit)) {
                 if ((pageNr + 1) <= pageLimit) {
                     setPageNr(pageNr + 1);
-                    fetchMore();
+                    fetchNextPage({ pageParam: pageNr + 1 }).then((dat) => {
+                        dispatch(contentTypesActions.setContentTypeObjects(contentTypeName, dat));
+                        data = dat;
+                    });
                 }
             }
         }
