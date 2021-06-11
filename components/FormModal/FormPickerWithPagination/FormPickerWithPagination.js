@@ -117,7 +117,7 @@ const FormPickerWithPagination = (props) => {
                 const dataExists = dat && dat.data;
                 if (dataExists) {
                     const lastData = dat.data;
-                    const totalPages = dat.totalPages || 1;
+                    const totalPages = dat.pageParams.totalPages || 1;
                     if (Array.isArray(lastData) && (lastData.length > 0)) {
                         const { partOfTitleProps } = dataContent[relatedObjectName];
                         const newData = dat.data.map((el) => {
