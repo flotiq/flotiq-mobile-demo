@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        maxWidth: '100%',
     },
     ratingText: {
         width: '100%',
@@ -15,12 +16,10 @@ const styles = StyleSheet.create({
     },
     nestedListItemContainer: {
         padding: 10,
-        width: '100%',
     },
     nestedListTitle: {
         fontSize: 18,
         fontWeight: '700',
-        width: '100%',
     },
     nestedListSubtitle: {
         fontSize: 15,
@@ -28,12 +27,14 @@ const styles = StyleSheet.create({
     itemSubtitle: {
         fontSize: 16,
         fontFamily: 'Roboto-Regular',
-        width: '100%',
+        flexDirection: 'row',
+        flexShrink: 1,
     },
     nestedSubtitleView: {
         fontSize: 16,
         fontFamily: 'Roboto-Regular',
-        width: '100%',
+        flexDirection: 'row',
+        flexShrink: 1,
     },
 });
 

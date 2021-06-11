@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Text, View } from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
-import Toast from 'react-native-simple-toast';
+import Toast from 'react-native-root-toast';
 import { useQuery, useQueryClient } from 'react-query';
 import { Icon } from 'react-native-elements';
 
@@ -110,14 +110,17 @@ const FormPickerWithPagination = (props) => {
                         props.navigation.navigate('ContentTypesScreen');
                     });
                 } else {
-                    Toast.showWithGravity(err.message, Toast.LONG, Toast.CENTER);
+                    Toast.show(
+                        err.message,
+                        { duration: Toast.durations.LONG, position: Toast.positions.BOTTOM },
+                    );
                 }
             },
             onSuccess: (dat) => {
                 const dataExists = dat && dat.data;
                 if (dataExists) {
                     const lastData = dat.data;
-                    const totalPages = dat.totalPages || 1;
+                    const totalPages = dat.pageParams.totalPages || 1;
                     if (Array.isArray(lastData) && (lastData.length > 0)) {
                         const { partOfTitleProps } = dataContent[relatedObjectName];
                         const newData = dat.data.map((el) => {

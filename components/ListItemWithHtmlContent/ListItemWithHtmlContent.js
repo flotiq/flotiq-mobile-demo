@@ -21,8 +21,7 @@ const CListItem = ({
     <ListItem
         containerStyle={containerStyle}
         bottomDivider
-        key={isNumber(parseInt(propName, 10))
-            ? `${Math.random()}-${index}` : `${propName}-${index}`}
+        key={`${Math.random()}-${propName}-${index}`}
     >
         <ListItem.Content>
             {!isNumber(parseInt(propName, 10)) && (
@@ -30,7 +29,9 @@ const CListItem = ({
                     {propName}
                 </ListItem.Title>
             )}
-            <ListItem.Subtitle style={subtitleStyle}>
+            <ListItem.Subtitle
+                style={{ ...subtitleStyle, width: Dimensions.get('window').width - 40 }}
+            >
                 {(renderElements(el, propName))}
             </ListItem.Subtitle>
         </ListItem.Content>
@@ -50,6 +51,15 @@ const ListItemWIthHtmlContent = ({ item, element, withHtml }) => {
                     <HTML
                         source={{ html: textValue }}
                         imagesMaxWidth={(Dimensions.get('window').width - 100)}
+                        tagsStyles={
+                            {
+                                p: { width: (Dimensions.get('window').width - 40) },
+                                h1: { width: (Dimensions.get('window').width - 40) },
+                                h2: { width: (Dimensions.get('window').width - 40) },
+                                h3: { width: (Dimensions.get('window').width - 40) },
+                                h4: { width: (Dimensions.get('window').width - 40) },
+                            }
+                        }
                         defaultTextProps={{ textSelectable: true }}
                         onLinkPress={(event, href) => {
                             Linking.openURL(href);

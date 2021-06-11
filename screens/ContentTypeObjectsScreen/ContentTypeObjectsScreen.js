@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Alert, FlatList, SafeAreaView } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import NetInfo from '@react-native-community/netinfo';
-import Toast from 'react-native-simple-toast';
+import Toast from 'react-native-root-toast';
 import { Icon } from 'react-native-elements';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
@@ -125,7 +125,10 @@ const ContentTypeObjectsScreen = (props) => {
                         props.navigation.navigate('ContentTypesScreen');
                     });
                 } else {
-                    Toast.showWithGravity(err.message, Toast.LONG, Toast.CENTER);
+                    Toast.show(
+                        err.message,
+                        { duration: Toast.durations.LONG, position: Toast.positions.BOTTOM },
+                    );
                 }
             },
             onSuccess: (dat) => {

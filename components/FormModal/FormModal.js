@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
-import { Alert, KeyboardAvoidingView, Modal, Platform, SafeAreaView, ScrollView, Text, View } from 'react-native';
+import { Alert,
+    KeyboardAvoidingView,
+    Modal,
+    Platform,
+    SafeAreaView,
+    ScrollView,
+    Text,
+    View } from 'react-native';
 import { useSelector } from 'react-redux';
-import Toast from 'react-native-simple-toast';
+import Toast from 'react-native-root-toast';
 
 import FormPickerWithPagination from './FormPickerWithPagination/FormPickerWithPagination';
 import FormInput from './FormInput/FormInput';
@@ -46,9 +53,10 @@ const FormModal = (props) => {
 
             if (Object.keys(errorsMessages).length) {
                 setValidationErrors(errorsMessages);
-                Toast.show('Check form errors', Toast.SHORT, [
-                    'UIAlertController',
-                ]);
+                Toast.show(
+                    'Check form errors',
+                    { duration: Toast.SHORT, position: Toast.positions.BOTTOM },
+                );
                 return;
             }
         }
@@ -75,7 +83,6 @@ const FormModal = (props) => {
                 ) => contentTypeDefinition.metaDefinition.propertiesConfig[param].isTitlePart,
             )
             || null;
-        console.log(partOfTitleProps);
         return transformToHumanReadableTitle(contentTypeObject, partOfTitleProps);
     };
 
