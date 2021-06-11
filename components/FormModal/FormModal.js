@@ -75,7 +75,6 @@ const FormModal = (props) => {
                 ) => contentTypeDefinition.metaDefinition.propertiesConfig[param].isTitlePart,
             )
             || null;
-        console.log(partOfTitleProps);
         return transformToHumanReadableTitle(contentTypeObject, partOfTitleProps);
     };
 

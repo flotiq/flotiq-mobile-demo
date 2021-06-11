@@ -180,7 +180,6 @@ export const makeApiCall = async (url, actionMethod, requestBody, header = '') =
         }
         throw new Error(errorMess);
     } catch (error) {
-        console.log(error);
         throw new Error(error.message);
     }
 };
