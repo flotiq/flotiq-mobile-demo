@@ -62,7 +62,7 @@ export const getFilterArrayByKeyName = (array, name) => {
 };
 
 export const filterObjectList = (objList, newList, indexName) => {
-    const newDataIds = newList.map((el) => el.data).flat().map((el) => el.id);
+    const newDataIds = newList.pages.map((el) => el.data).flat().map((el) => el.id);
     const newObjectData = {};
     Object.keys(objList).forEach((el) => {
         const existsInArr = newDataIds.includes(el);
