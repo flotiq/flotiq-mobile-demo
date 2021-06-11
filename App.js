@@ -15,6 +15,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
+import { RootSiblingParent } from 'react-native-root-siblings';
 
 import FlotiqNavigator from './navigation/FlotiqNavigator/FlotiqNavigator';
 import contentTypesReducer from './store/reducers/contentTypes';
@@ -60,7 +61,7 @@ const App = () => {
         );
     }
     return (
-        <>
+        <RootSiblingParent>
             <StatusBar translucent barStyle="light-content" backgroundColor="transparent" />
             <Provider store={store}>
                 <QueryClientProvider client={queryClient}>
@@ -69,7 +70,7 @@ const App = () => {
                     </PersistGate>
                 </QueryClientProvider>
             </Provider>
-        </>
+        </RootSiblingParent>
     );
 };
 

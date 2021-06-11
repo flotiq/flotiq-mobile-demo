@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useQuery, useQueryClient } from 'react-query';
 import { CommonActions, useNavigation, useRoute } from '@react-navigation/native';
 import NetInfo from '@react-native-community/netinfo';
-import Toast from 'react-native-simple-toast';
+import Toast from 'react-native-root-toast';
 import * as contentTypesAction from '../../store/actions/contentTypes';
 
 import ApiTokenError from '../../api/http/errors/apiTokenError';
@@ -125,7 +125,10 @@ const ObjectScreen = (props) => {
                         props.navigation.navigate('ContentTypeObjectsScreen');
                     });
                 } else {
-                    Toast.showWithGravity(err.message, Toast.LONG, Toast.CENTER);
+                    Toast.show(
+                        err.message,
+                        { duration: Toast.duration.LONG, position: Toast.positions.BOTTOM },
+                    );
                 }
             },
             onSuccess: (dat) => {
