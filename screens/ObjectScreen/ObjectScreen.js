@@ -221,7 +221,7 @@ const ObjectScreen = (props) => {
 };
 
 export const contentObjectScreenOptions = ({ route, navigation }) => {
-    const ctoName = route.params.objectName || 'Details';
+    const ctoName = route.params.objectName || route.params.ctoName || 'Details';
     const screenTitle = route.params.objectLabel
         ? `${ctoName} - ${route.params.objectLabel}` : 'Object Details';
     const items = [
@@ -240,6 +240,9 @@ export const contentObjectScreenOptions = ({ route, navigation }) => {
             },
         },
     ];
+    if (ctoName === '_media') {
+        delete items[0];
+    }
     return (
         {
             headerTitle: screenTitle,
