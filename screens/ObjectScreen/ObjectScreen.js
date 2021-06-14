@@ -28,7 +28,8 @@ import Colors from '../../helpers/constants/colors';
 
 const ObjectScreen = (props) => {
     const { objectId, ctoName, withReachTextProps, partOfTitleProps } = props.route.params;
-    const contentObject = useSelector((state) => state.contentTypes.object[ctoName][objectId]);
+    const contentObject = useSelector((state) => (
+        state.contentTypes.object[ctoName] ? state.contentTypes.object[ctoName][objectId] : null));
     const contentTypesDefinitions = useSelector((state) => state.contentTypes.definitions);
     const dispatch = useDispatch();
     const queryClient = useQueryClient();
