@@ -54,6 +54,7 @@ const ContentTypeObjectsScreen = (props) => {
 
     const [formModalVisibility, setFormModalVisibility] = useState(false);
     const [editContentId, setEditContentId] = useState(null);
+    const [editContent, setEditContent] = useState(null);
 
     useEffect(() => {
         if (route && route.searchBoxVisible) {
@@ -219,6 +220,7 @@ const ContentTypeObjectsScreen = (props) => {
                 renderLeft={contentTypeName !== '_media'}
                 onEdit={() => {
                     setEditContentId(el.id);
+                    setEditContent(el);
                     setFormModalVisibility(true);
                 }}
                 onDelete={() => onDeleteHandler(el.id)}
@@ -295,6 +297,7 @@ const ContentTypeObjectsScreen = (props) => {
                 await httpCT.updateContentObject(contentTypeName, editContentId, response);
 
                 setEditContentId(null);
+                setEditContent(null);
             } else {
                 await httpCT.createContentObject(contentTypeName, response);
             }
@@ -376,10 +379,12 @@ const ContentTypeObjectsScreen = (props) => {
                         onPressCancel={() => {
                             setFormModalVisibility(!formModalVisibility);
                             setEditContentId(null);
+                            setEditContent(null);
                         }}
                         dataName={contentTypeName}
                         data={getDefinitionData(contentTypesDefinitions)}
                         partOfTitleProps={partOfTitleProps}
+                        cto={editContent}
                     />
                 )}
         </SafeAreaView>

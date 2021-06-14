@@ -25,11 +25,11 @@ import styles from './styles';
 import Colors from '../../helpers/constants/colors';
 
 const FormModal = (props) => {
-    const { isModalVisible, onPressSave, onPressCancel, data, dataName, edit } = props;
+    const { isModalVisible, onPressSave, onPressCancel, data, dataName, edit, cto } = props;
     const contentTypeDefinitions = useSelector((state) => state.contentTypes.definitions);
     const contentTypeDefinition = contentTypeDefinitions.find((ctd) => dataName === ctd.name);
     const contentTypeObject = useSelector(
-        (state) => (edit ? state.contentTypes.object[dataName][edit] : null),
+        (state) => (edit ? (cto || state.contentTypes.object[dataName][edit]) : null),
     );
 
     const [formData, setFormData] = useState({});
@@ -65,6 +65,22 @@ const FormModal = (props) => {
 
         if (edit && !isUpload) {
             editFormData = { ...contentTypeObject, ...trimmedValuesFD };
+            Object.keys(contentTypeDefinition.metaDefinition.propertiesConfig)
+                .forEach((prop) => {
+                    const property = contentTypeDefinition.metaDefinition.propertiesConfig[prop];
+                    if (property.inputType === 'datasource') {
+                        editFormData[prop] = editFormData[prop].map((el) => {
+                            if (el.type && el.dataUrl) {
+                                return el;
+                            }
+                            const tmp = { ...el };
+                            return {
+                                type: 'internal',
+                                dataUrl: `/api/v1/content/${tmp.internal.contentType}/${tmp.id}`,
+                            };
+                        });
+                    }
+                });
         }
         if (editFormData) {
             onPressSave(editFormData);

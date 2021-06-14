@@ -17,7 +17,9 @@ export const getPropsWithProperty = (prop, typeProperty, typeValue) => {
     return null;
 };
 
-export const getContentTypeObjectsListWithProperties = (contentTypesDefinitions, typeProperty, typeValue) => {
+export const getContentTypeObjectsListWithProperties = (
+    contentTypesDefinitions, typeProperty, typeValue,
+) => {
     if (!contentTypesDefinitions) return null;
     const ctoPOTProps = contentTypesDefinitions.map((el) => {
         const p = el.metaDefinition.propertiesConfig;
@@ -61,8 +63,10 @@ export const getFilterArrayByKeyName = (array, name) => {
     return null;
 };
 
-export const filterObjectList = (objList, newList, indexName) => {
-    const newDataIds = newList.pages.map((el) => el.data).flat().map((el) => el.id);
+export const filterObjectList = (objList, newList) => {
+    const list = newList.data ? newList.data : newList;
+
+    const newDataIds = list.pages.map((el) => el.data).flat().map((el) => el.id);
     const newObjectData = {};
     Object.keys(objList).forEach((el) => {
         const existsInArr = newDataIds.includes(el);

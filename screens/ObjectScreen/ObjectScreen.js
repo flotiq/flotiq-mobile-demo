@@ -28,7 +28,8 @@ import Colors from '../../helpers/constants/colors';
 
 const ObjectScreen = (props) => {
     const { objectId, ctoName, withReachTextProps, partOfTitleProps } = props.route.params;
-    const contentObject = useSelector((state) => state.contentTypes.object);
+    const contentObject = useSelector((state) => (
+        state.contentTypes.object[ctoName] ? state.contentTypes.object[ctoName][objectId] : null));
     const contentTypesDefinitions = useSelector((state) => state.contentTypes.definitions);
     const dispatch = useDispatch();
     const queryClient = useQueryClient();
@@ -217,6 +218,7 @@ const ObjectScreen = (props) => {
                     dataName={ctoName}
                     data={getDefinitionData(contentTypesDefinitions)}
                     partOfTitleProps={partOfTitleProps}
+                    cto={contentObject}
                 />
             )}
         </SafeAreaView>
