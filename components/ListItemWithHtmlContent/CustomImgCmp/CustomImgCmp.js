@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Linking } from 'react-native';
+import { View, Text, Linking, Dimensions } from 'react-native';
 import { Image } from 'react-native-elements';
 
 import IndicatorOverlay from '../../Indicators/IndicatorOverlay';
@@ -30,6 +30,7 @@ const CustomImgCmp = (props) => {
             style={{
                 ...styles.imageContainer,
                 height: (ext === 'svg') ? 'auto' : 220,
+                width: Dimensions.get('window').width - 40,
             }}
         >
             <Text onPress={() => Linking.openURL(fullUrl)}>{fullUrl}</Text>
