@@ -77,6 +77,7 @@ const ListItemWIthHtmlContent = ({ item, element, withHtml }) => {
             <View style={{ width: '100%' }}>
                 {Object.keys(el).map((e, i) => (
                     <CListItem
+                        key={e}
                         el={el[e]}
                         index={i}
                         propName={e}
