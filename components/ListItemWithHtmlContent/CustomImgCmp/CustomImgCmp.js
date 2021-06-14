@@ -33,7 +33,7 @@ const CustomImgCmp = (props) => {
                 width: Dimensions.get('window').width - 40,
             }}
         >
-            <Text onPress={() => Linking.openURL(fullUrl)}>{fullUrl}</Text>
+            <Text onPress={() => Linking.openURL(fullUrl)} numberOfLines={1}>{fullUrl}</Text>
             {ext === 'svg'
                 ? <Text style={styles.text}>SVG image</Text>
                 : (
