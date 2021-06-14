@@ -19,7 +19,7 @@ const Search = (props) => {
     const route = useRoute();
     const { contentTypes, partOfTitlePropsList, withRichTextPropsList } = route.params;
 
-    const {
+    let {
         status,
         data,
         refetch,
@@ -28,7 +28,7 @@ const Search = (props) => {
         ['search', search, chosenCT],
         () => httpQ.fetchSearchResults('', search, chosenCT),
         {
-            manual: true,
+            enabled: false,
         },
     );
     const queryClient = useQueryClient();
@@ -42,7 +42,10 @@ const Search = (props) => {
     useEffect(() => {
         const canRefetch = status !== 'loading' && !isFetching && startSearch && search.length > 3;
         if (canRefetch) {
-            refetch();
+            refetch().then((dat) => {
+                setStartSearch(false);
+                data = dat.data;
+            });
         }
     }, [chosenCT, status, isFetching, refetch, startSearch, search]);
 
