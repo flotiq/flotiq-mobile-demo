@@ -65,6 +65,19 @@ const FormModal = (props) => {
 
         if (edit && !isUpload) {
             editFormData = { ...contentTypeObject, ...trimmedValuesFD };
+            Object.keys(contentTypeDefinition.metaDefinition.propertiesConfig)
+                .forEach((prop) => {
+                    const property = contentTypeDefinition.metaDefinition.propertiesConfig[prop];
+                    if (property.inputType === 'datasource') {
+                        editFormData[prop] = editFormData[prop].map((el) => {
+                            const tmp = { ...el };
+                            return {
+                                type: 'internal',
+                                dataUrl: `/api/v1/content/${tmp.internal.contentType}/${tmp.id}`,
+                            };
+                        });
+                    }
+                });
         }
         if (editFormData) {
             onPressSave(editFormData);
