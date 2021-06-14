@@ -23,6 +23,17 @@ Screenshots:
 <img src="https://api.flotiq.com/image/200x400/_media-5eb414e34e512.png">
 </p>
 
+## Key features:
+
+* Login via API Key
+* API Key QR code scanner
+* Listing Content Type Definitions
+* Listing Content Objects
+* Single Content Object preview
+* Content Object management (create, update, delete)
+* Content Objects search
+* Adding media using the file browser or camera
+
 
 ## Quick start
 
