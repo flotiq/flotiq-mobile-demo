@@ -18,28 +18,22 @@ import AppLoading from 'expo-app-loading';
 import { RootSiblingParent } from 'react-native-root-siblings';
 
 import FlotiqNavigator from './navigation/FlotiqNavigator/FlotiqNavigator';
-import contentTypesReducer from './store/reducers/contentTypes';
-import authReducer from './store/reducers/auth';
+import store from './store/store';
 
 enableScreens();
 const queryClient = new QueryClient();
 
-const rootReducer = combineReducers({
-    auth: authReducer,
-    contentTypes: contentTypesReducer,
-});
+//const persistConfig = {
+//    key: 'root',
+///    storage: AsyncStorage,
+//};
 
-const persistConfig = {
-    key: 'root',
-    storage: AsyncStorage,
-};
-
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+//const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 // eslint-disable-next-line no-undef
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(persistedReducer, composeEnhancers(applyMiddleware(ReduxThunk)));
-const persistor = persistStore(store);
+//const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+//const store = createStore(persistedReducer, composeEnhancers(applyMiddleware(ReduxThunk)));
+//const persistor = persistStore(store);
 
 const fetchFonts = () => Font.loadAsync({
     'Roboto-Light': require('./assets/fonts/Roboto-Light.ttf'),
@@ -65,9 +59,9 @@ const App = () => {
             <StatusBar translucent barStyle="light-content" backgroundColor="transparent" />
             <Provider store={store}>
                 <QueryClientProvider client={queryClient}>
-                    <PersistGate loading={null} persistor={persistor}>
+                    {/*<PersistGate loading={null} persistor={persistor}>*/}
                         <FlotiqNavigator />
-                    </PersistGate>
+                    {/*</PersistGate>*/}
                 </QueryClientProvider>
             </Provider>
         </RootSiblingParent>

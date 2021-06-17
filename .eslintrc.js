@@ -39,5 +39,6 @@ module.exports = {
         'max-len': ['error', { code: 100 }],
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'warn',
+        'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['state'] }],
     },
 };

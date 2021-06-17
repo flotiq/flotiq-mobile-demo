@@ -3,7 +3,7 @@ import { View, ScrollView } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { Text } from 'react-native-elements';
 
-import * as authActions from '../../store/actions/auth';
+import * as authActions from '../../store/authSlice';
 import { missingApiKeyAlert, ivalidApiKeyAlert } from '../../helpers/alertsHelper';
 
 import IndicatorOverlay from '../../components/Indicators/IndicatorOverlay';
@@ -73,7 +73,7 @@ const AuthenticationScreen = ({ navigation }) => {
     const confirmHandle = async (apiToken, apiUrl = null) => {
         if (apiToken) {
             setIsLoading(true);
-            dispatch(authActions.setApiToken(apiToken, apiUrl));
+            dispatch(authActions.setApiToken({ apiToken, apiUrl }));
         } else {
             setIsLoading(false);
             await missingApiKeyAlert();

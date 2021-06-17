@@ -7,7 +7,7 @@ import { useQuery, useQueryClient } from 'react-query';
 import { Icon } from 'react-native-elements';
 
 import ApiTokenError from '../../../api/http/errors/apiTokenError';
-import * as authTypesActions from '../../../store/actions/auth';
+import * as authTypesActions from '../../../store/authSlice';
 import { fetchingDataErrorAlert } from '../../../helpers/alertsHelper';
 
 import * as contentTypesActions from '../../../store/actions/contentTypes';

@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Button } from 'react-native-elements';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import * as authActions from '../../store/actions/auth';
+import * as authActions from '../../store/authSlice';
 import styles from './styles';
 
 const LougoutBtn = (navigation) => {

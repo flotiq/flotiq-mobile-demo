@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Text } from 'react-native-elements';
 import CustomBtn from '../../components/CustomBtn/CustomBtn';
 
-import * as authActions from '../../store/actions/auth';
+import * as authActions from '../../store/authSlice';
 
 import Colors from '../../helpers/constants/colors';
 import styles from './styles';

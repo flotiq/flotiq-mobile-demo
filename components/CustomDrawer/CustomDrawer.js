@@ -9,7 +9,7 @@ import { StackActions } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './styles';
 
-import * as authActions from '../../store/actions/auth';
+import * as authActions from '../../store/authSlice';
 
 const CustomDrawer = (props) => {
     const dispatch = useDispatch();

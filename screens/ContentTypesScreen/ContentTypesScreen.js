@@ -14,7 +14,7 @@ import IndicatorOverlay from '../../components/Indicators/IndicatorOverlay';
 import ListHeaderIndicator from '../../components/Indicators/List/Header/ListHeaderIndicator';
 import ListFooterIndicator from '../../components/Indicators/List/Footer/ListFooterIndicator';
 
-import * as authTypesActions from '../../store/actions/auth';
+import * as authTypesActions from '../../store/authSlice';
 import * as contentTypesActions from '../../store/actions/contentTypes';
 import CustomListItem from '../../components/CustomListItem/CustomListItem';
 import Search from '../../components/Search/Search';

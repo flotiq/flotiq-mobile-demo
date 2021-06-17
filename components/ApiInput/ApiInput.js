@@ -19,7 +19,7 @@ const ApiInput = (props) => {
                 label="Flotiq Read-Only API Key"
                 placeholder="enter api key"
                 keyboardType="default"
-                value={apiToken && apiToken}
+                value={apiValue}
                 leftIcon={(
                     <MaterialCommunityIcons
                         name="key"

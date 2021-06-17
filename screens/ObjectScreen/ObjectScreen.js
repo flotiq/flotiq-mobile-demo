@@ -9,7 +9,7 @@ import * as contentTypesAction from '../../store/actions/contentTypes';
 
 import ApiTokenError from '../../api/http/errors/apiTokenError';
 import ApiNoDataError from '../../api/http/errors/apiNoDataError';
-import * as authTypesActions from '../../store/actions/auth';
+import * as authTypesActions from '../../store/authSlice';
 import * as httpCT from '../../api/http/rquests/contentTypes';
 import { confirmDeleteAction,
     fetchingDataErrorAlert,
