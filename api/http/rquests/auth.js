@@ -5,6 +5,7 @@ import { parseResponseMessage, checkApiTokenIsValid } from '../errors/helpers/pa
 
 export const checkApiToken = async (apiToken, apiUrl = null) => {
     const url = apiUrl || API_URL;
+    // eslint-disable-next-line no-undef
     const response = await fetch(
         `${url}${API_PREFIX}internal/contenttype?auth_token=${apiToken}`,
     );
@@ -23,6 +24,7 @@ export const autoAuthorization = async (apiUrl = null) => {
 
     if (apiToken) {
         const url = apiUrl || await getApiUrl();
+        // eslint-disable-next-line no-undef
         const response = await fetch(
             `${url}${API_PREFIX}internal/contenttype?auth_token=${apiToken}`,
         );

@@ -95,11 +95,8 @@ const ContentTypesScreen = (props) => {
             }
         },
         onSuccess: (dat) => {
-            const dataExists = dat && dat.length > 0;
-            if (dataExists) {
-                if (dataExists && Array.isArray(dat)) {
-                    dispatch(contentTypesActions.setContentTypeDefinitions(dat));
-                }
+            if (Array.isArray(dat)) {
+                dispatch(contentTypesActions.setContentTypeDefinitions(dat));
             }
             return dat;
         },
@@ -149,16 +146,18 @@ const ContentTypesScreen = (props) => {
 
     const returnListData = useCallback(() => {
         const dataIsNotEmpty = data && data.length > 0;
+        console.log('data', data);
+        console.log(dataIsNotEmpty);
         if (contentTypesDefinitions && (!netInfo.isInternetReachable || !dataIsNotEmpty)) {
             return contentTypesDefinitions;
         }
-        if (dataIsNotEmpty) return data;
-        return [];
+        return data;
     }, [contentTypesDefinitions, data, netInfo.isInternetReachable]);
 
     /* Params set to use in Search cmp */
     useEffect(() => {
         const listData = returnListData();
+        console.log('listData', listData);
         const partOfTitlePropsList = getContentTypeObjectsListWithProperties(
             returnListData(), 'isTitlePart', [true],
         );
@@ -174,18 +173,23 @@ const ContentTypesScreen = (props) => {
         }
     }, [returnListData, props.navigation]);
 
-    const renderItem = (item) => (item.item ? (
-        <View
-            key={`${item.item.id}-view}`}
-            style={styles.listItemWrapper}
-        >
-            <CustomListItem
-                element={item.item}
-                title={item.item.label || item.item.name}
-                onPress={contentTypePressHandle}
-            />
-        </View>
-    ) : null);
+    const renderItem = ({ item }) => {
+        if (item.name === '_media') {
+            console.log(item);
+        }
+        return (
+            <View
+                key={`${item.id}-view}`}
+                style={styles.listItemWrapper}
+            >
+                <CustomListItem
+                    element={item}
+                    title={item.label || item.name}
+                    onPress={contentTypePressHandle}
+                />
+            </View>
+        );
+    };
 
     const onHandleHideSearchBox = () => {
         props.navigation.dispatch(CommonActions.setParams({ searchBoxVisible: false }));
@@ -219,7 +223,6 @@ const ContentTypesScreen = (props) => {
                     />
                 )}
             <FlatList
-                keyExtractor={(item) => item.id}
                 data={returnListData()}
                 renderItem={renderItem}
                 ListFooterComponent={renderListLoader}

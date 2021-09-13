@@ -187,11 +187,7 @@ const ContentTypeObjectsScreen = (props) => {
             return transformToArrayForListData(contentTypeObjects, contentTypeName);
         }
         if (dataIsNotEmpty) {
-            let tmp = [];
-            data.pages.forEach((d) => {
-                tmp = tmp.concat(d);
-            });
-            return tmp;
+            return data.pages.flat();
         }
         return [];
     }, [data, contentTypeName, contentTypeObjects, netInfo.isInternetReachable]);
