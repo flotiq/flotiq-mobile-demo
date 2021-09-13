@@ -6260,13 +6260,6 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   "version" "17.0.2"
 
-"react-native-camera@^3.44.0":
-  "integrity" "sha512-B95RL3laK2v8R7L/37v28MYcEcwsM/mS94h6EZuRMLH5HFolkAwh7zJo+UAn7FG9eFtAdBwIM6s9OqYudTVO4Q=="
-  "resolved" "https://registry.npmjs.org/react-native-camera/-/react-native-camera-3.44.1.tgz"
-  "version" "3.44.1"
-  dependencies:
-    "prop-types" "^15.6.2"
-
 "react-native-elements@^3.4.1":
   "integrity" "sha512-m0eAWOn7JuR1wNTNY0WHuaqst4LI/gFE4N5Bbyfsc4DiryWsMST7aAg5w/Gos4IexWIzhLKCIkPxthND1m/8Xg=="
   "resolved" "https://registry.npmjs.org/react-native-elements/-/react-native-elements-3.4.2.tgz"
