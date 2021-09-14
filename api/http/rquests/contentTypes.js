@@ -5,8 +5,9 @@ import { API_URL, API_PREFIX } from '../../../helpers/constants/global';
 import { parseResponseMessage, checkApiTokenIsValid } from '../errors/helpers/parseMessage';
 
 const CONTENTTYPE_URL = `${API_PREFIX}internal/contenttype`;
+const MEDIA_URL = `${API_PREFIX}internal/contenttype/_media`;
 const CONTENT_URL = `${API_PREFIX}content`;
-const MEDIA_URL = '/media';
+
 const DEFAULT_CT = 'application/json';
 
 export const getApiConfig = async () => {
@@ -20,13 +21,19 @@ export const getApiConfig = async () => {
 };
 
 export const fetchContentTypes = async () => {
-    const url = `${CONTENTTYPE_URL}?limit=200`;
+    const url = `${CONTENTTYPE_URL}?limit=200&internal=0`;
     const response = await fetchData(url);
+    const media = await fetchData(`${MEDIA_URL}?limit=200`);
+    const mediaIndex = response.data.length;
+    const mergedData = [
+        ...response.data,
+    ];
+    mergedData[mediaIndex] = media;
 
     if (!response || !response.data || !response.data.length > 0) {
         throw new ApiNoDataError('Missing data!');
     }
-    return response.data;
+    return mergedData;
 };
 
 export const fetchContentTypeObjects = async (ctoName, pageNr = 1) => {
@@ -141,7 +148,7 @@ export const removeContentObject = async (ctoName, coId) => {
 };
 
 export const uploadMedia = async (body) => {
-    const url = MEDIA_URL;
+    const url = '/media';
     const ctHeader = 'multipart/form-data';
     const requestBody = body ? body.data : '';
 

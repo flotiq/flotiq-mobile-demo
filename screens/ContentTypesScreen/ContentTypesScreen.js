@@ -95,11 +95,8 @@ const ContentTypesScreen = (props) => {
             }
         },
         onSuccess: (dat) => {
-            const dataExists = dat && dat.length > 0;
-            if (dataExists) {
-                if (dataExists && Array.isArray(dat)) {
-                    dispatch(contentTypesActions.setContentTypeDefinitions(dat));
-                }
+            if (Array.isArray(dat)) {
+                dispatch(contentTypesActions.setContentTypeDefinitions(dat));
             }
             return dat;
         },
@@ -152,8 +149,7 @@ const ContentTypesScreen = (props) => {
         if (contentTypesDefinitions && (!netInfo.isInternetReachable || !dataIsNotEmpty)) {
             return contentTypesDefinitions;
         }
-        if (dataIsNotEmpty) return data;
-        return [];
+        return data;
     }, [contentTypesDefinitions, data, netInfo.isInternetReachable]);
 
     /* Params set to use in Search cmp */
@@ -174,18 +170,18 @@ const ContentTypesScreen = (props) => {
         }
     }, [returnListData, props.navigation]);
 
-    const renderItem = (item) => (item.item ? (
+    const renderItem = ({ item }) => (
         <View
-            key={`${item.item.id}-view}`}
+            key={`${item.id}-view}`}
             style={styles.listItemWrapper}
         >
             <CustomListItem
-                element={item.item}
-                title={item.item.label || item.item.name}
+                element={item}
+                title={item.label || item.name}
                 onPress={contentTypePressHandle}
             />
         </View>
-    ) : null);
+    );
 
     const onHandleHideSearchBox = () => {
         props.navigation.dispatch(CommonActions.setParams({ searchBoxVisible: false }));
@@ -219,7 +215,6 @@ const ContentTypesScreen = (props) => {
                     />
                 )}
             <FlatList
-                keyExtractor={(item) => item.id}
                 data={returnListData()}
                 renderItem={renderItem}
                 ListFooterComponent={renderListLoader}
