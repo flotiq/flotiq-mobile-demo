@@ -10,7 +10,7 @@ import { Alert,
 import { useSelector } from 'react-redux';
 import Toast from 'react-native-root-toast';
 
-import FormPickerWithPagination from './FormPickerWithPagination/FormPickerWithPagination';
+import RelationPicker from './RelationPicker/RelationPicker';
 import FormInput from './FormInput/FormInput';
 import ImageFormPicker from './ImageFormPicker/ImageFormPicker';
 
@@ -63,12 +63,12 @@ const FormModal = (props) => {
 
         let editFormData = null;
 
-        if (edit && !isUpload) {
+        if (!isUpload) {
             editFormData = { ...contentTypeObject, ...trimmedValuesFD };
             Object.keys(contentTypeDefinition.metaDefinition.propertiesConfig)
                 .forEach((prop) => {
                     const property = contentTypeDefinition.metaDefinition.propertiesConfig[prop];
-                    if (property.inputType === 'datasource') {
+                    if (property.inputType === 'datasource' && editFormData[prop]) {
                         editFormData[prop] = editFormData[prop].map((el) => {
                             if (el.type && el.dataUrl) {
                                 return el;
@@ -126,16 +126,20 @@ const FormModal = (props) => {
             setFormData(resp);
         }
 
+        const isMultiple = () => contentTypeDefinition
+            .metaDefinition
+            .propertiesConfig[fieldName]
+            ?.validation
+            ?.relationMultiple;
+
         return (
-            <FormPickerWithPagination
-                key={`${definition.id}-${fieldName}-picker`}
+            <RelationPicker
+                key={`${definition.id}-${fieldName}-relation-picker`}
                 fieldName={fieldName}
                 editRelations={formData[fieldName]}
                 relatedObjectName={relatedObjectName}
-                data={data}
-                dataContent={data}
-                edited={edit}
                 onChangeValue={onChangeValueHandler}
+                isMultiple={isMultiple()}
             />
         );
     };

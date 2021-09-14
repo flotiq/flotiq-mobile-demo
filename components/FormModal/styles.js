@@ -30,12 +30,11 @@ const styles = StyleSheet.create({
     },
     bodyContainer: {
         flex: 1,
-        paddingHorizontal: 10,
-        paddingVertical: 10,
     },
     innerContainer: {
         flex: 1,
         paddingVertical: 20,
+        paddingHorizontal: 10,
     },
     bottomSageArea: {
         backgroundColor: '#000',

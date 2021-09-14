@@ -1,3 +1,5 @@
+import { IMAGE_URL } from './constants/global';
+
 export const getPropsWithProperty = (prop, typeProperty, typeValue) => {
     if (prop) {
         const propsWithType = Object.keys(prop).filter((p) => {
@@ -31,7 +33,14 @@ export const getContentTypeObjectsListWithProperties = (
     return ctoPOTProps.length > 0 ? ctoPOTProps.filter((i) => i !== null) : null;
 };
 
-export const transformToHumanReadableTitle = (element, partsOfTitle) => {
+/**
+ * Display object name based on element properties marked as 'part of object title'
+ * @todo Will be removed if internal.objectTitle will be available (#20111)
+ * @param element Content object
+ * @param partsOfTitle array of properties which should be treat as title
+ * @returns string
+ */
+export const transformToHumanReadableTitle = (element, partsOfTitle = ['name', 'fileName']) => {
     if (partsOfTitle && Array.isArray(partsOfTitle)) {
         const titleParts = [];
         partsOfTitle.forEach((i) => {
@@ -43,6 +52,27 @@ export const transformToHumanReadableTitle = (element, partsOfTitle) => {
     }
     return element.id;
 };
+
+/**
+ * Return image URL with required dimensions
+ * @param contentObject Content object
+ * @param width Width of thumbnail
+ * @param height Height of thumbnail. Use 0 for auto height
+ * @returns {string|null} String with address or null if Content Object is not media type
+ */
+export const getImageUrl = (contentObject, width = 150, height = 0) => {
+    if (isMedia(contentObject)) {
+        return `${IMAGE_URL}/${width}x${height}/${contentObject.id}.${contentObject.extension}`;
+    }
+    return null;
+};
+
+/**
+ * Test if Content Object is media type
+ * @param contentObject
+ * @returns {boolean}
+ */
+export const isMedia = (contentObject) => contentObject.internal.contentType === '_media';
 
 export const transformToArrayForListData = (objects, type = null) => {
     const initialDatas = type ? objects[type] : objects;
