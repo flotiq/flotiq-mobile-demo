@@ -155,7 +155,6 @@ const ContentTypesScreen = (props) => {
     /* Params set to use in Search cmp */
     useEffect(() => {
         const listData = returnListData();
-        console.log('listData', listData);
         const partOfTitlePropsList = getContentTypeObjectsListWithProperties(
             returnListData(), 'isTitlePart', [true],
         );
@@ -171,23 +170,18 @@ const ContentTypesScreen = (props) => {
         }
     }, [returnListData, props.navigation]);
 
-    const renderItem = ({ item }) => {
-        if (item.name === '_media') {
-            console.log(item);
-        }
-        return (
-            <View
-                key={`${item.id}-view}`}
-                style={styles.listItemWrapper}
-            >
-                <CustomListItem
-                    element={item}
-                    title={item.label || item.name}
-                    onPress={contentTypePressHandle}
-                />
-            </View>
-        );
-    };
+    const renderItem = ({ item }) => (
+        <View
+            key={`${item.id}-view}`}
+            style={styles.listItemWrapper}
+        >
+            <CustomListItem
+                element={item}
+                title={item.label || item.name}
+                onPress={contentTypePressHandle}
+            />
+        </View>
+    );
 
     const onHandleHideSearchBox = () => {
         props.navigation.dispatch(CommonActions.setParams({ searchBoxVisible: false }));

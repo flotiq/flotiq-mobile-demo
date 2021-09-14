@@ -25,7 +25,6 @@ export const fetchContentTypes = async () => {
     const response = await fetchData(url);
     const media = await fetchData(`${MEDIA_URL}?limit=200`);
     const mediaIndex = response.data.length;
-    console.log(mediaIndex);
     const mergedData = [
         ...response.data,
     ];
