@@ -63,12 +63,12 @@ const FormModal = (props) => {
 
         let editFormData = null;
 
-        if (edit && !isUpload) {
+        if (!isUpload) {
             editFormData = { ...contentTypeObject, ...trimmedValuesFD };
             Object.keys(contentTypeDefinition.metaDefinition.propertiesConfig)
                 .forEach((prop) => {
                     const property = contentTypeDefinition.metaDefinition.propertiesConfig[prop];
-                    if (property.inputType === 'datasource') {
+                    if (property.inputType === 'datasource' && editFormData[prop]) {
                         editFormData[prop] = editFormData[prop].map((el) => {
                             if (el.type && el.dataUrl) {
                                 return el;

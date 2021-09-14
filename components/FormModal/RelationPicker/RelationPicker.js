@@ -10,7 +10,7 @@ const RelationPicker = ({
     onChangeValue,
     fieldName,
     relatedObjectName,
-    editRelations,
+    editRelations = [],
     isMultiple,
 }) => {
     const [showPickerItem, setShowPickerItem] = useState();
