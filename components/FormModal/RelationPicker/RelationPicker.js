@@ -17,10 +17,9 @@ const RelationPicker = ({
 
     const onSelectValueHandler = (item) => {
         const isDuplicate = editRelations.findIndex((el) => el.id === item.id) !== -1;
-        if (isDuplicate) {
-            return;
+        if (!isDuplicate) {
+            onChangeValue(fieldName, isMultiple ? [item, ...editRelations] : [item]);
         }
-        onChangeValue(fieldName, isMultiple ? [item, ...editRelations] : [item]);
         setShowPickerItem(false);
     };
 
