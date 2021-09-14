@@ -4,10 +4,9 @@ const styles = StyleSheet.create({
     imageContainer: {
         width: '100%',
         height: 220,
-        paddingBottom: 50,
+        padding: 10,
     },
     image: {
-        marginTop: 10,
         width: '100%',
         height: '100%',
     },

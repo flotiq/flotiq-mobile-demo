@@ -6,13 +6,11 @@ import ImagePreview from '../../../ImagePreview/ImagePreview';
 
 import styles from './styles';
 
-const PickerItem = ({ coId, coName, imgUrl, onChangeValue }) => (
+const SelectModalItem = ({ coId, coName, imgUrl, onPress }) => (
     <TouchableFeedback
-        onPress={onChangeValue}
+        onPress={onPress}
     >
-        <View
-            style={!imgUrl ? styles.pickerItem : styles.pickerItemWithPreview}
-        >
+        <View style={styles.pickerItem}>
             <Text
                 style={!imgUrl ? styles.itemTitle : styles.itemTitleWithPreview}
                 numberOfLines={1}
@@ -31,4 +29,4 @@ const PickerItem = ({ coId, coName, imgUrl, onChangeValue }) => (
     </TouchableFeedback>
 );
 
-export default PickerItem;
+export default SelectModalItem;

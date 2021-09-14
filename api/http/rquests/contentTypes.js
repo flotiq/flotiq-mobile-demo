@@ -30,7 +30,8 @@ export const fetchContentTypes = async () => {
 };
 
 export const fetchContentTypeObjects = async (ctoName, pageNr = 1) => {
-    const url = `${CONTENT_URL}/${ctoName}?page=${pageNr}`;
+    // eslint-disable-next-line max-len
+    const url = `${CONTENT_URL}/${ctoName}?page=${pageNr}&order_by=internal.createdAt&order_direction=desc`;
 
     const response = await fetchData(url);
     if (!response || !response.data) {

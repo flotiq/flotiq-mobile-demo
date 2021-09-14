@@ -10,7 +10,8 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderStyle: 'solid',
         paddingHorizontal: 20,
-        paddingVertical: 10,
+        paddingVertical: 20,
+        alignItems: 'center',
     },
     pickerItemWithPreview: {
         flexDirection: 'row',
@@ -19,7 +20,6 @@ const styles = StyleSheet.create({
         borderStyle: 'solid',
         paddingHorizontal: 20,
         paddingVertical: 20,
-        alignItems: 'center',
     },
     itemTitle: {
         fontFamily: 'Roboto-Regular',
