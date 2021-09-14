@@ -146,8 +146,6 @@ const ContentTypesScreen = (props) => {
 
     const returnListData = useCallback(() => {
         const dataIsNotEmpty = data && data.length > 0;
-        console.log('data', data);
-        console.log(dataIsNotEmpty);
         if (contentTypesDefinitions && (!netInfo.isInternetReachable || !dataIsNotEmpty)) {
             return contentTypesDefinitions;
         }

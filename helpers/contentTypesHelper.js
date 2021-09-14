@@ -21,7 +21,6 @@ export const getContentTypeObjectsListWithProperties = (
     contentTypesDefinitions, typeProperty, typeValue,
 ) => {
     if (!contentTypesDefinitions) return null;
-    console.log('contenttypes',contentTypesDefinitions);
     const ctoPOTProps = contentTypesDefinitions.map((el) => {
         const p = el.metaDefinition.propertiesConfig;
         if (!p) return null;
