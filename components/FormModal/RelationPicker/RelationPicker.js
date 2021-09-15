@@ -12,6 +12,7 @@ const RelationPicker = ({
     relatedObjectName,
     editRelations = [],
     isMultiple,
+    fieldLabel,
 }) => {
     const [showPickerItem, setShowPickerItem] = useState();
 
@@ -34,7 +35,7 @@ const RelationPicker = ({
         <View style={styles.container}>
             <View style={styles.pickerHeader}>
                 <Text style={styles.pickerHeaderTxt}>
-                    {fieldName}
+                    {fieldLabel}
                 </Text>
                 <CustomBtn
                     title="Select"
