@@ -13,7 +13,7 @@ export const getDefinitionData = (definitions, name = null) => {
 
         const partOfTitleProps = getPropsWithProperty(typesOfFields, 'isTitlePart', [true]);
 
-        Object.keys(typesOfFields).map((def) => {
+        Object.keys(typesOfFields).forEach((def) => {
             if (requiredFields.includes(def)) {
                 typesOfFields[def].required = true;
             }
@@ -23,6 +23,7 @@ export const getDefinitionData = (definitions, name = null) => {
             id: definitionId,
             definitions: typesOfFields,
             partOfTitleProps,
+            order: element.metaDefinition.order,
         };
     });
     return newMap;

@@ -148,16 +148,23 @@ const ObjectScreen = (props) => {
         return <IndicatorOverlay />;
     }
 
-    const renderItem = (item) => Object.keys(item.item).map((el, i) => (el !== 'object_data'
-        ? (
-            <ListItemWIthHtmlContent
-                key={`${item.item.id}-child-${i}`}
-                item={item.item[el]}
-                element={el}
-                withHtml={withReachTextProps}
-            />
-        )
-        : null));
+    const renderItem = (item) => {
+        const def = getDefinitionData(contentTypesDefinitions)[ctoName];
+        const order = ['id', ...def.order, 'internal'];
+        console.log(def.definitions);
+        return order.map((el, i) => (el !== 'object_data'
+            ? (
+                <ListItemWIthHtmlContent
+                    key={`${item.item.id}-child-${i}`}
+                    item={item.item[el]}
+                    element={el}
+                    label={def.definitions[el] ? def.definitions[el].label : el}
+                    withHtml={withReachTextProps}
+                />
+            )
+            : null));
+    };
+
     const listLoader = () => {
         if (status !== 'loading' && isFetching) return <ListHeaderIndicator />;
 

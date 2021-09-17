@@ -140,6 +140,7 @@ const FormModal = (props) => {
                 relatedObjectName={relatedObjectName}
                 onChangeValue={onChangeValueHandler}
                 isMultiple={isMultiple()}
+                fieldLabel={contentTypeDefinition.metaDefinition.propertiesConfig[fieldName].label}
             />
         );
     };
@@ -173,9 +174,10 @@ const FormModal = (props) => {
         );
     };
 
-    const renderFields = (def) => Object.entries(def.definitions).map((el) => {
-        const name = el[0] || 'Title';
-        const properties = el[1] || null;
+    const renderFields = (def) => def.order.map((fieldName) => {
+        const el = def.definitions[fieldName];
+        const name = fieldName || 'Title';
+        const properties = el || null;
         const typeOfField = (properties && properties.inputType) || 'text';
 
         if (typeOfField === 'datasource') {
