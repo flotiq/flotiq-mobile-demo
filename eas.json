@@ -1,0 +1,58 @@
+{
+    "build": {
+      "master": {
+        "android": {
+          "buildType": "app-bundle"
+        },
+        "ios": {
+          "image": "latest"
+        },
+        "distribution": "store",
+        "env": {
+          "STAGE_NAME": "prod"
+        }
+      },
+      "develop": {
+        "android": {
+          "buildType": "apk"
+        },
+        "ios": {
+          "image": "latest"
+        },
+        "distribution": "internal",
+        "env": {
+          "STAGE_NAME": "dev"
+        }
+      },
+      "test": {
+        "android": {
+          "buildType": "apk"
+        },
+        "ios": {
+          "image": "latest"
+        },
+        "distribution": "internal",
+        "env": {
+          "STAGE_NAME": "dev"
+        }
+      }
+    },
+    "submit": {
+      "internal": {
+        "ios": {
+          "appleTeamId": "2FFP433XJJ",
+          "ascAppId": "1505331246",
+          "sku": "cdwvlotiqdemoapp",
+          "language": "pl-PL",
+          "companyName": "Codewave sp. zo.o.",
+          "appName": "Flotiq Mobile Expo"
+        },
+        "android": {
+          "serviceAccountKeyPath": "./google-key.json",
+          "track": "internal",
+          "releaseStatus": "completed"
+        }
+      }
+    }
+  }
+  
