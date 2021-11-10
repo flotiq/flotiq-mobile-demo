@@ -3,7 +3,7 @@ import { Alert, FlatList, SafeAreaView } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import NetInfo from '@react-native-community/netinfo';
 import Toast from 'react-native-root-toast';
-import { Icon } from 'react-native-elements';
+import { Icon, Text } from 'react-native-elements';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -32,13 +32,18 @@ import ListFooterIndicator from '../../components/Indicators/List/Footer/ListFoo
 import CustomListItem from '../../components/CustomListItem/CustomListItem';
 
 const ContentTypeObjectsScreen = (props) => {
-    const {
-        contentTypeName,
-        partOfTitleProps,
-        withReachTextProps,
-        refetchData,
-        contentTypeLabel,
-    } = props.route.params;
+    // const {
+    //     contentTypeName,
+    //     partOfTitleProps,
+    //     withReachTextProps,
+    //     refetchData,
+    //     contentTypeLabel,
+    // } = props.route.params;
+    const contentTypeName = 'product';
+    const partOfTitleProps = ['name'];
+    const withReachTextProps = ['description'];
+    const refetchData = true;
+
     const contentTypesDefinitions = useSelector((state) => state.contentTypes.definitions);
     const contentTypeObjects = useSelector((state) => state.contentTypes.objects);
     const totalPagesMax = useSelector((state) => state.contentTypes.totalPages);
@@ -209,7 +214,7 @@ const ContentTypeObjectsScreen = (props) => {
         item.item.data.map((el) => (
             <CustomListItem
                 key={`${el.id}-cli}`}
-                isSwipeable
+                // isSwipeable
                 element={el}
                 title={transformToHumanReadableTitle(el, partOfTitleProps)}
                 onPress={objectPressHandle}
@@ -357,15 +362,13 @@ const ContentTypeObjectsScreen = (props) => {
                     />
                 )
                 : (
-                    <NoData
-                        title="Create your first"
-                        message="Object of type"
-                        dataType={contentTypeLabel}
-                    />
+                    <Text style={{ padding: 20 }}>No products to display</Text>
+                    // <NoData
+                    //     title="Create your first"
+                    //     message="Object of type"
+                    //     dataType={contentTypeLabel}
+                    // />
                 )}
-            <FloatButton
-                onPressFloatBtn={() => setFormModalVisibility(!formModalVisibility)}
-            />
             {(formModalVisibility && contentTypesDefinitions && contentTypeName)
                 && (
                     <FormModal
@@ -387,9 +390,8 @@ const ContentTypeObjectsScreen = (props) => {
     );
 };
 
-export const contentTypeObjectsScreenOptions = ({ route, navigation }) => {
-    const screenTitle = route.params.contentTypeLabel
-        ? `${route.params.contentTypeLabel} - objects` : 'Content Type Objects';
+export const contentTypeObjectsScreenOptions = ({ navigation }) => {
+    const screenTitle = 'Products';
     return (
         {
             title: screenTitle,

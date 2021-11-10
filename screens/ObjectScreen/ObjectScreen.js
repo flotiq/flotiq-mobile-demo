@@ -260,11 +260,11 @@ export const contentObjectScreenOptions = ({ route, navigation }) => {
         {
             headerTitle: screenTitle,
             headerTitleStyle: styles.headerOptionsTitle,
-            headerRight: () => (
-                <MenuDropdown
-                    items={items}
-                />
-            ),
+            // headerRight: () => (
+            //     <MenuDropdown
+            //         items={items}
+            //     />
+            // ),
         }
     );
 };

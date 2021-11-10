@@ -81,11 +81,6 @@ const HomeStackScreen = () => (
 const ContentTypesStackScreen = () => (
     <>
         <Stack.Screen
-            name="ContentTypesScreen"
-            component={ContentTypesScreen}
-            options={contentTypesScreenOptions}
-        />
-        <Stack.Screen
             title="Content Type Objects"
             name="ContentTypeObjectsScreen"
             component={ContentTypeObjectsScreen}
@@ -122,7 +117,6 @@ export const rootStackNavigator = (props) => (
         initialRouteName="HomeScreen"
         screenOptions={defaultScreenOptions()}
     >
-        {HomeStackScreen()}
         {ContentTypesStackScreen()}
         {SearchStackScreen()}
     </Stack.Navigator>

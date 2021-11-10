@@ -21,6 +21,9 @@ import FlotiqNavigator from './navigation/FlotiqNavigator/FlotiqNavigator';
 import contentTypesReducer from './store/reducers/contentTypes';
 import authReducer from './store/reducers/auth';
 
+// Add this line after imports:
+AsyncStorage.setItem('flotiqApiKey', '<< YOUR FLOTIQ READ-ONLY API KEY >>');
+
 enableScreens();
 const queryClient = new QueryClient();
 
