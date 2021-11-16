@@ -1,11 +1,10 @@
 {
   "expo": {
-    "name": "flotiq-mobile-demo",
+    "name": "Flotiq Mobile Expo",
     "slug": "flotiq-mobile-demo",
-    "owner": "codewave",
-    "version": "2.0.5",
+    "version": "2.0.1",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "owner": "codewave",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -16,19 +15,17 @@
     },
     "assetBundlePatterns": [
       "**/*"
-    ],
+    ],     
     "ios": {
+    "icon": "./assets/iconIOS.png",
       "supportsTablet": true,
       "bundleIdentifier": "eu.codewave.flotiqmobiledemo",
-      "buildNumber": "2.0.5"
+      "buildNumber": "2.0.2"
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      },
-      "package": "eu.codewave.flotiqmobiledemo",
-      "versionCode": 25
+      "icon": "assets/iconAndroid.png",
+      "package": "com.flotiqmobiledemo",
+      "versionCode": 28
     },
     "web": {
       "favicon": "./assets/favicon.png"
