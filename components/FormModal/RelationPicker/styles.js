@@ -1,4 +1,5 @@
 import { StyleSheet, Platform } from 'react-native';
+import Colors from '../../../helpers/constants/colors';
 
 const styles = StyleSheet.create({
     container: {
@@ -21,8 +22,8 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     pickerHeaderTxt: {
-        fontFamily: Platform.OS === 'ios' ? 'Roboto-Medium' : 'Roboto-Bold',
-        color: '#86939e',
+        fontFamily: Platform.OS === 'ios' ? 'Inter-Medium' : 'Inter-Bold',
+        color: Colors.accent6,
         fontSize: 16,
         textTransform: 'capitalize',
     },

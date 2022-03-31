@@ -24,15 +24,15 @@ const styles = StyleSheet.create({
     },
     h2Style: {
         fontSize: 24,
-        color: '#000000',
+        color: Colors.accent3,
         textAlign: 'left',
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'Inter-Regular',
     },
     paragraph: {
         fontSize: 20,
-        color: '#000000',
+        color: Colors.accent3,
         textAlign: 'left',
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'Inter-Regular',
     },
     confirmBtn: {
         width: 120,

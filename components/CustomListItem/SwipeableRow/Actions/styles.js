@@ -4,7 +4,7 @@ import Colors from '../../../../helpers/constants/colors';
 const styles = StyleSheet.create({
     leftAction: {
         marginTop: 20,
-        backgroundColor: Colors.accent4,
+        backgroundColor: Colors.accent2,
         justifyContent: 'flex-end',
         alignItems: 'center',
         flexDirection: 'row-reverse',

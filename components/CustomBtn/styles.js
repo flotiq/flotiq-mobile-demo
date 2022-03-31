@@ -3,12 +3,12 @@ import Colors from '../../helpers/constants/colors';
 
 const styles = StyleSheet.create({
     btn: {
-        backgroundColor: '#299BAC',
+        backgroundColor: Colors.primary,
         paddingHorizontal: 20,
     },
     title: {
         fontSize: 18,
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'Inter-Regular',
     },
     loader: {
         color: Colors.primary,

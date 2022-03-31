@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
         borderTopWidth: 0,
         borderBottomWidth: 1,
-        borderBottomColor: '#000',
+        borderBottomColor: Colors.accent3,
         paddingBottom: 1,
     },
     searchBarPickerContainerIOS: {
@@ -38,13 +38,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffffff',
     },
     searchBarInput: {
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'Inter-Regular',
         paddingBottom: 0,
         marginTop: 25,
         marginLeft: 0,
         paddingLeft: 0,
         textAlign: 'left',
-        color: '#000',
+        color: Colors.accent3,
     },
     searchBarInputLoader: {
         marginTop: 25,
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.primary,
     },
     searchButtonTitleStyle: {
-        fontFamily: 'Roboto-Bold',
+        fontFamily: 'Inter-Bold',
     },
     searchResultContainer: {
         paddingTop: 10,
@@ -72,19 +72,19 @@ const styles = StyleSheet.create({
         marginLeft: 30,
     },
     searchResultText: {
-        fontFamily: 'Roboto-Regular',
-        color: '#989898',
+        fontFamily: 'Inter-Regular',
+        color: Colors.accent6,
     },
     searchResultTextValue: {
-        fontFamily: 'Roboto-Bold',
-        color: Colors.accent4,
+        fontFamily: 'Inter-Bold',
+        color: Colors.accent2,
     },
     searchLimitBox: {
         paddingTop: 10,
         marginHorizontal: 30,
     },
     searchLimitText: {
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'Inter-Regular',
         color: Colors.danger,
     },
 });

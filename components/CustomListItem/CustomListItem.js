@@ -41,7 +41,7 @@ const CustomListItem = React.memo(({
 
                             <Icon
                                 name="chevron-right"
-                                color="#000000"
+                                color="#050038"
                             />
                         </View>
                     </TouchableFeedback>

@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     header: {
-        fontFamily: 'Roboto-Medium',
+        fontFamily: 'Inter-Medium',
         fontSize: 26,
         color: '#fff',
     },
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
     },
     bottomSageArea: {
-        backgroundColor: '#000',
+        backgroundColor: Colors.accent3,
     },
     btnWrapper: {
         flexDirection: 'row',

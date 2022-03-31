@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     noImgText: {
-        fontFamily: 'Roboto-Bold',
+        fontFamily: 'Inter-Bold',
         fontSize: 25,
         color: '#fff',
         textShadowColor: 'rgba(0, 0, 0, 0.5)',
@@ -30,12 +30,12 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         width: '80%',
         marginVertical: 20,
-        backgroundColor: Colors.accent4,
+        backgroundColor: Colors.accent2,
     },
     photoBtn: {
         alignSelf: 'center',
         width: '80%',
-        backgroundColor: Colors.accent4,
+        backgroundColor: Colors.accent2,
     },
 });
 

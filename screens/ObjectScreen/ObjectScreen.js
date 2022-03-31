@@ -151,7 +151,6 @@ const ObjectScreen = (props) => {
     const renderItem = (item) => {
         const def = getDefinitionData(contentTypesDefinitions)[ctoName];
         const order = ['id', ...def.order, 'internal'];
-        console.log(def.definitions);
         return order.map((el, i) => (el !== 'object_data'
             ? (
                 <ListItemWIthHtmlContent

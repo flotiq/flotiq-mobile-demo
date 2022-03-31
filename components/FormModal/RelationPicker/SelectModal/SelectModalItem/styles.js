@@ -22,11 +22,11 @@ const styles = StyleSheet.create({
         paddingVertical: 20,
     },
     itemTitle: {
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'Inter-Regular',
         fontSize: 14,
     },
     itemTitleWithPreview: {
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'Inter-Regular',
         fontSize: 14,
         width: '70%',
     },

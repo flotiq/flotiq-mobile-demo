@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     },
     listTitle: {
         fontSize: 20,
-        fontFamily: 'Roboto-Bold',
+        fontFamily: 'Inter-Bold',
         width: '100%',
     },
     nestedListItemContainer: {
@@ -26,13 +26,13 @@ const styles = StyleSheet.create({
     },
     itemSubtitle: {
         fontSize: 16,
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'Inter-Regular',
         flexDirection: 'row',
         flexShrink: 1,
     },
     nestedSubtitleView: {
         fontSize: 16,
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'Inter-Regular',
         flexDirection: 'row',
         flexShrink: 1,
     },

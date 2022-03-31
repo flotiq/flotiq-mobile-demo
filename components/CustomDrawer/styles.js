@@ -10,8 +10,8 @@ const styles = StyleSheet.create({
     },
     uglyDrawerItem: {
         fontSize: 18,
-        fontFamily: 'Roboto-Bold',
-        color: '#000000',
+        fontFamily: 'Inter-Bold',
+        color: Colors.accent3,
         padding: 15,
         margin: 5,
     },
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     },
     removeDrawerItem: {
         fontSize: 18,
-        fontFamily: 'Roboto-Bold',
+        fontFamily: 'Inter-Bold',
         color: Colors.danger,
         padding: 15,
         margin: 5,
