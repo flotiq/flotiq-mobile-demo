@@ -5,6 +5,7 @@ import SwipeableRow from './SwipeableRow/SwipeableRow';
 
 import TouchableFeedback from '../TouchableFeedback/TouchableFeedback';
 import styles from './styles';
+import colors from '../../helpers/constants/colors';
 
 const CustomListItem = React.memo(({
     element,
@@ -41,7 +42,7 @@ const CustomListItem = React.memo(({
 
                             <Icon
                                 name="chevron-right"
-                                color="#050038"
+                                color={colors.accent3}
                             />
                         </View>
                     </TouchableFeedback>

@@ -25,7 +25,6 @@ module.exports = {
         'react-hooks',
     ],
     rules: {
-        // 'linebreak-style': ['error', 'windows'],
         'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
         'no-use-before-define': ['error', { variables: false }],
         'object-curly-newline': ['error', { ImportDeclaration: 'never' }],
