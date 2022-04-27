@@ -31,7 +31,7 @@ const defaultScreenOptions = () => (
     {
         headerTintColor: '#fff',
         headerTitleStyle: {
-            fontFamily: 'Roboto-Bold',
+            fontFamily: 'Inter-Bold',
             fontSize: 20,
             paddingHorizontal: 20,
             marginLeft: defaultStatusBarLeftMargin,

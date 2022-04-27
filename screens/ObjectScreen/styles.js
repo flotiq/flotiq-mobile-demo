@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     },
     listTitle: {
         fontSize: 20,
-        fontFamily: 'Roboto-Bold',
+        fontFamily: 'Inter-Bold',
     },
     nestedListItemContainer: {
         padding: 10,
@@ -24,11 +24,11 @@ const styles = StyleSheet.create({
     },
     itemSubtitle: {
         fontSize: 16,
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'Inter-Regular',
     },
     nestedSubtitleView: {
         fontSize: 16,
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'Inter-Regular',
     },
     headerOptionsTitle: {
         width: Dimensions.get('window').width - 120,
@@ -40,11 +40,11 @@ export const htmlStyles = StyleSheet.create({
     p: {
         marginBottom: 10,
         marginTop: 10,
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'Inter-Regular',
         fontSize: 16,
     },
     span: {
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'Inter-Regular',
     },
 });
 

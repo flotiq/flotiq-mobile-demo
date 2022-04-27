@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     },
     containerStyle: {
         width: '100%',
-        backgroundColor: '#000',
+        backgroundColor: Colors.accent3,
     },
     marker: {
         borderColor: Colors.primary,
@@ -16,10 +16,10 @@ const styles = StyleSheet.create({
     botomContent: {
         color: Colors.secondary,
         fontSize: 20,
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'Inter-Regular',
     },
     scannerContainer: {
-        backgroundColor: '#000',
+        backgroundColor: Colors.accent3,
     },
 });
 

@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import Colors from '../../helpers/constants/colors';
 
 const styles = StyleSheet.create({
     listItemWrapper: {
@@ -18,14 +19,14 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     title: {
-        fontFamily: 'Roboto-Bold',
+        fontFamily: 'Inter-Bold',
         fontSize: 18,
-        color: '#000000',
+        color: Colors.accent3,
     },
     subtitle: {
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'Inter-Regular',
         fontSize: 15,
-        color: '#333333',
+        color: Colors.accent4,
     },
 });
 

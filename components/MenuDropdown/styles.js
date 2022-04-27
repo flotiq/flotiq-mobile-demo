@@ -1,4 +1,5 @@
 import { StyleSheet, Platform } from 'react-native';
+import Colors from '../../helpers/constants/colors';
 
 const styles = StyleSheet.create({
     container: {
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
         width: 170,
         backgroundColor: '#fff',
         borderRadius: 2,
-        shadowColor: '#000000',
+        shadowColor: Colors.accent3,
         shadowOffset: {
             width: 0,
             height: 3,
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
     },
     actionBtn: {
         backgroundColor: 'transparent',
-        borderColor: '#82827E',
+        borderColor: Colors.accent6,
         borderRadius: 0,
     },
 });

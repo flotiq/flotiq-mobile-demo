@@ -54,7 +54,7 @@ const HomeScreen = (props) => {
                         title="Remove API Key"
                         onPressBtn={() => deleteApiKey()}
                         buttonStyle={styles.btnDanger}
-                        titleStyle={{ color: '#000000' }}
+                        titleStyle={{ color: Colors.accent3 }}
                     />
                 </View>
             </View>

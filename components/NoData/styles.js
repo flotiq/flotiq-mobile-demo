@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import Colors from '../../helpers/constants/colors';
 
 const { width } = Dimensions.get('window');
 const smallDeviceScreen = width <= 360;
@@ -15,19 +16,19 @@ const styles = StyleSheet.create({
         marginTop: smallDeviceScreen ? 160 : 240,
     },
     title: {
-        fontFamily: 'Roboto-Light',
+        fontFamily: 'Inter-Light',
         fontSize: 24,
         letterSpacing: 1.5,
-        color: '#82827E',
+        color: Colors.accent6,
         textAlign: 'center',
     },
     body: {
-        fontFamily: 'Roboto-Medium',
+        fontFamily: 'Inter-Medium',
         fontSize: 32,
         textAlign: 'center',
     },
     dataTypeName: {
-        fontFamily: 'Roboto-Medium',
+        fontFamily: 'Inter-Medium',
         fontSize: 32,
         textAlign: 'center',
     },

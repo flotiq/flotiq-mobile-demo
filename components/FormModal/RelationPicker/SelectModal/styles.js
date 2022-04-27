@@ -22,12 +22,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     header: {
-        fontFamily: 'Roboto-Bold',
+        fontFamily: 'Inter-Bold',
         fontSize: 26,
         color: '#fff',
     },
     itemTitle: {
-        fontFamily: 'Roboto-regular',
+        fontFamily: 'Inter-regular',
         fontSize: 14,
     },
     innerViewWrapper: {
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     itemTitleWithPreview: {
-        fontFamily: 'Roboto-regular',
+        fontFamily: 'Inter-regular',
         fontSize: 14,
         width: '70%',
     },
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     },
     paginationBtn: {
         width: '100%',
-        backgroundColor: Colors.accent4,
+        backgroundColor: Colors.accent2,
     },
     paginationCounter: {
         width: '20%',
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     paginationCounterText: {
-        fontFamily: 'Roboto-Bold',
+        fontFamily: 'Inter-Bold',
         fontSize: 18,
     },
 });

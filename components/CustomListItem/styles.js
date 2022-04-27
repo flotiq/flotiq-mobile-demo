@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     },
     listItemContainer: {
         padding: 10,
-        borderColor: Colors.accent4,
+        borderColor: Colors.accent2,
         borderWidth: 2,
         backgroundColor: 'transparent',
         justifyContent: 'space-between',
@@ -19,14 +19,14 @@ const styles = StyleSheet.create({
     },
     title: {
         width: '85%',
-        fontFamily: 'Roboto-Medium',
+        fontFamily: 'Inter-Medium',
         fontSize: 18,
-        color: '#000000',
+        color: Colors.accent3,
     },
     subtitle: {
-        fontFamily: 'Roboto-Regular',
+        fontFamily: 'Inter-Regular',
         fontSize: 16,
-        color: '#333333',
+        color: Colors.accent4,
     },
 });
 

@@ -17,10 +17,10 @@ This project was generated using [Expo](https://expo.io) version 4.5.1 with [Rea
 
 Screenshots:
 <p float="left">
-<img src="https://api.flotiq.com/image/200x400/_media-5eb4123f65c3d.png">
-<img src="https://api.flotiq.com/image/200x400/_media-5eb41261030c3.png">
-<img src="https://api.flotiq.com/image/200x400/_media-5eb4128924efe.png">
-<img src="https://api.flotiq.com/image/200x400/_media-5eb414e34e512.png">
+<img src="https://api.flotiq.com/image/225x400/_media-312eac73-40fa-49e8-899d-dad955dcce5c.png">
+<img src="https://api.flotiq.com/image/225x400/_media-e14b4826-377b-4c71-a922-3b4ed95a0dc6.png">
+<img src="https://api.flotiq.com/image/225x400/_media-9c0c4c60-dbb6-4598-a91c-a69732a0fce7.png">
+<img src="https://api.flotiq.com/image/225x400/_media-6ce3b769-d819-44ad-b653-dd5d3e7380f8.png">
 </p>
 
 ## Key features:

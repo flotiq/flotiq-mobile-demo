@@ -9,7 +9,7 @@ const TouchableFeedback = (props) => {
             <TouchableNativeFeedback
                 onPress={props.onPress}
                 background={Platform.Version >= 21
-                    ? TouchableNativeFeedback.Ripple(Colors.accent4, false)
+                    ? TouchableNativeFeedback.Ripple(Colors.accent2, false)
                     : TouchableNativeFeedback.SelectableBackground()}
             >
                 {props.children}
