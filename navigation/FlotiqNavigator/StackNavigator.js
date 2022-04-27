@@ -70,7 +70,7 @@ const HomeStackScreen = () => (
         name="HomeScreen"
         component={HomeScreen}
         options={{
-            title: 'Flotiq Mobile Demo App',
+            title: 'Welcome!',
             headerTitleStyle: {
                 marginLeft: 0,
             },
@@ -117,7 +117,7 @@ const SearchStackScreen = () => (
     </>
 );
 
-export const rootStackNavigator = (props) => (
+export const RootStackNavigator = (props) => (
     <Stack.Navigator
         initialRouteName="HomeScreen"
         screenOptions={defaultScreenOptions()}
@@ -133,7 +133,9 @@ export const MainNavigator = ({ route }) => {
 
     return (
         <Drawer.Navigator
-            initialRouteName="AuthenticationScreen"
+            initialRouteName="Authentication"
+            backBehavior="none"
+            useLegacyImplementation
             drawerContent={(props) => <CustomDrawer {...props} />}
         >
             {!authToken
@@ -141,12 +143,24 @@ export const MainNavigator = ({ route }) => {
                     <Drawer.Screen
                         name="AuthenticationScreen"
                         component={AuthenticationStackScreen}
+                        options={{
+                            title: 'Sign in',
+                            headerTitleStyle: {
+                                marginLeft: 0,
+                            },
+                        }}
                     />
                 )
                 : (
                     <Drawer.Screen
                         name="RootScreen"
-                        component={rootStackNavigator}
+                        component={RootStackNavigator}
+                        options={{
+                            title: 'Flotiq Mobile Demo App',
+                            headerTitleStyle: {
+                                marginLeft: 0,
+                            },
+                        }}
                     />
                 )}
         </Drawer.Navigator>

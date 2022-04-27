@@ -42,7 +42,9 @@ const HomeScreen = (props) => {
                     <Text h2 h2Style={styles.h2Style}>Demo App</Text>
                 </View>
                 <View style={styles.body}>
-                    <Text style={styles.paragraph}>You can use this demo to look at your content from Flotiq Headless CMS</Text>
+                    <Text style={styles.paragraph}>
+                        You can use this demo to look at your content from Flotiq Headless CMS
+                    </Text>
                 </View>
                 <View style={styles.btnContainer}>
                     <CustomBtn
