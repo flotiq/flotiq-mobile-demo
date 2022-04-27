@@ -134,7 +134,6 @@ export const MainNavigator = ({ route }) => {
     return (
         <Drawer.Navigator
             initialRouteName="Authentication"
-            backBehavior="none"
             useLegacyImplementation
             drawerContent={(props) => <CustomDrawer {...props} />}
         >
