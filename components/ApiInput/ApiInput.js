@@ -16,7 +16,7 @@ const ApiInput = (props) => {
         <View style={styles.container}>
             <Input
                 containerStyle={styles.containerStyle}
-                label="Flotiq Read-Only API Key"
+                label="Flotiq API Key"
                 placeholder="enter api key"
                 keyboardType="default"
                 value={apiToken && apiToken}

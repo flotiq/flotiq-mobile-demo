@@ -25,7 +25,6 @@ const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
 const WIDTH = Dimensions.get('window').width;
-const defaultStatusBarHeight = Platform.OS === 'android' ? 120 : 90;
 const defaultStatusBarLeftMargin = Platform.OS === 'android' ? -35 : 25;
 const defaultScreenOptions = () => (
     {
@@ -40,17 +39,15 @@ const defaultScreenOptions = () => (
         headerBackground: () => (
             <GradientWrapper />
         ),
-        headerStyle: { height: defaultStatusBarHeight },
     }
 );
 
 const AuthenticationStackScreen = () => (
     <Stack.Navigator
-        initialRouteName="AuthenticationScreen"
         screenOptions={defaultScreenOptions()}
     >
         <Stack.Screen
-            name="AuthenticationScreen"
+            name="AuthenticationScreen - Sign In"
             component={AuthenticationScreen}
             options={
                 {
@@ -70,7 +67,7 @@ const HomeStackScreen = () => (
         name="HomeScreen"
         component={HomeScreen}
         options={{
-            title: 'Flotiq Mobile Demo App',
+            title: 'Welcome!',
             headerTitleStyle: {
                 marginLeft: 0,
             },
@@ -117,7 +114,7 @@ const SearchStackScreen = () => (
     </>
 );
 
-export const rootStackNavigator = (props) => (
+export const RootStackNavigator = (props) => (
     <Stack.Navigator
         initialRouteName="HomeScreen"
         screenOptions={defaultScreenOptions()}
@@ -130,23 +127,35 @@ export const rootStackNavigator = (props) => (
 
 export const MainNavigator = ({ route }) => {
     const authToken = useSelector((state) => state.auth.apiToken);
-
     return (
         <Drawer.Navigator
-            initialRouteName="AuthenticationScreen"
+            useLegacyImplementation
+            defaultScreenOptions={defaultScreenOptions}
             drawerContent={(props) => <CustomDrawer {...props} />}
         >
             {!authToken
                 ? (
                     <Drawer.Screen
-                        name="AuthenticationScreen"
+                        name="AuthenticationScreen - Main"
                         component={AuthenticationStackScreen}
+                        options={{
+                            title: 'Authentication',
+                            headerTitleStyle: {
+                                marginLeft: 0,
+                            },
+                        }}
                     />
                 )
                 : (
                     <Drawer.Screen
                         name="RootScreen"
-                        component={rootStackNavigator}
+                        component={RootStackNavigator}
+                        options={{
+                            title: 'Flotiq Mobile Demo App',
+                            headerTitleStyle: {
+                                marginLeft: 0,
+                            },
+                        }}
                     />
                 )}
         </Drawer.Navigator>
