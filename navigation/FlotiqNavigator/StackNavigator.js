@@ -25,7 +25,6 @@ const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
 const WIDTH = Dimensions.get('window').width;
-const defaultStatusBarHeight = Platform.OS === 'android' ? 120 : 90;
 const defaultStatusBarLeftMargin = Platform.OS === 'android' ? -35 : 25;
 const defaultScreenOptions = () => (
     {
@@ -40,7 +39,6 @@ const defaultScreenOptions = () => (
         headerBackground: () => (
             <GradientWrapper />
         ),
-        headerStyle: { height: defaultStatusBarHeight },
     }
 );
 
