@@ -46,11 +46,10 @@ const defaultScreenOptions = () => (
 
 const AuthenticationStackScreen = () => (
     <Stack.Navigator
-        initialRouteName="AuthenticationScreen"
         screenOptions={defaultScreenOptions()}
     >
         <Stack.Screen
-            name="AuthenticationScreen"
+            name="AuthenticationScreen - Sign In"
             component={AuthenticationScreen}
             options={
                 {
@@ -130,20 +129,19 @@ export const RootStackNavigator = (props) => (
 
 export const MainNavigator = ({ route }) => {
     const authToken = useSelector((state) => state.auth.apiToken);
-
     return (
         <Drawer.Navigator
-            initialRouteName="Authentication"
             useLegacyImplementation
+            defaultScreenOptions={defaultScreenOptions}
             drawerContent={(props) => <CustomDrawer {...props} />}
         >
             {!authToken
                 ? (
                     <Drawer.Screen
-                        name="AuthenticationScreen"
+                        name="AuthenticationScreen - Main"
                         component={AuthenticationStackScreen}
                         options={{
-                            title: 'Sign in',
+                            title: 'Authentication',
                             headerTitleStyle: {
                                 marginLeft: 0,
                             },

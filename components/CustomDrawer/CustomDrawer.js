@@ -23,7 +23,22 @@ const CustomDrawer = (props) => {
     };
 
     if (!apiToken) {
-        return null;
+        return (
+            <View style={styles.container}>
+                <View>
+                    <TouchableCmp
+                        onPress={() => navigation.navigate('AuthenticationScreen - Sign In')}
+                        style={styles.touchCmp}
+                    >
+                        <View>
+                            <Text style={styles.uglyDrawerItem}>
+                                Sign In
+                            </Text>
+                        </View>
+                    </TouchableCmp>
+                </View>
+            </View>
+        );
     }
 
     return (
