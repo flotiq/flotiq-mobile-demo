@@ -10,13 +10,11 @@ jobs:
       - name: init
         uses: actions/checkout@v3
       - name: version_read
-        run: |
-          VERSION=
-          cat ./VERSION > VERSION
-          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+        run: bash src/version_read.sh
+          
         id: version_read
       - name: version_check
-        if: steps.version_read.output.VERSION != ""
+        if: ${{ steps.version_read.output.VERSION }}
         run: |
           echo "Tag name ${{  github.ref_name }}"
       - name: Create tag
