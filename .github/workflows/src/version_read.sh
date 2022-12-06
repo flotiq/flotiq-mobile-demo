@@ -1,7 +1,6 @@
 #!/bin/bash
-VERSION=
-cat ./VERSION > VERSION
-echo ./VERSION
+VERSION=$(cat ./VERSION)
+echo VERSION
 if [ -z "$VERSION" ]
 then
 echo "There is no version available"
