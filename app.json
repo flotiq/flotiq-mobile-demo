@@ -11,13 +11,14 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/91c1d9e8-7528-45e5-bd42-7ed897844cb1"
     },
     "assetBundlePatterns": [
       "**/*"
-    ],     
+    ],
     "ios": {
-    "icon": "./assets/iconIOS.png",
+      "icon": "./assets/iconIOS.png",
       "supportsTablet": true,
       "bundleIdentifier": "eu.codewave.flotiqmobiledemo",
       "buildNumber": "2.0.2"
@@ -29,6 +30,14 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "91c1d9e8-7528-45e5-bd42-7ed897844cb1"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
     }
   }
 }

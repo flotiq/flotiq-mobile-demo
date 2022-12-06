@@ -1,0 +1,17 @@
+name: build-app
+run-name: ${{ github.actor }} 
+on:
+  pull_request:
+    types:
+      - closed
+jobs:
+  build-app:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - run: npm install -g bats
+      - run: bats -v

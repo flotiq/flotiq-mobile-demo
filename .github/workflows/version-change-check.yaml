@@ -1,0 +1,32 @@
+name: version-check
+on: push
+  # pull_request:
+  #   types:
+  #     - opened
+jobs:
+  version-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: init
+        uses: actions/checkout@v3
+      - name: version_read
+        run: |
+          VERSION=""
+          cat ./VERSION > VERSION
+          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+        id: version_read
+      - name: version_check
+        if: steps.version_read.output.VERSION != ""
+        run: |
+          echo "Tag name ${{  github.ref_name }}"
+      - name: Create tag
+        uses: actions/github-script@v5
+        with:
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'refs/tags/2.0.0',
+              sha: context.sha
+            })
+        
