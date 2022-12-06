@@ -3,8 +3,8 @@ VERSION=
 cat ./VERSION > VERSION
 if [ -z "$VERSION" ]
 then
-echo "\$var is empty"
+echo "There is no version available"
+exit 1
 else
-echo "\$var is NOT empty"
-fi
 echo "VERSION=$VERSION" >> "$GITHUB_OUTPUT"
+fi
