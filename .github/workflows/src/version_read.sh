@@ -1,7 +1,8 @@
 #!/bin/bash
 VERSION=$(cat ./VERSION)
 echo "$VERSION"
-git show origin/test_master:VERSION
+echo Master "$(git show origin/test_master:VERSION)"
+git log --graph --pretty=oneline --abbrev-commit
 echo "VERSION=$VERSION">> "$GITHUB_ENV"
 if [ -z "$VERSION" ]
 then
