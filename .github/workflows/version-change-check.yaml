@@ -10,9 +10,8 @@ jobs:
   version-check:
     runs-on: ubuntu-latest
     steps:
-      - name: init
-        uses: actions/checkout@v3
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
       - name: version_read
         run: bash .github/workflows/src/version_read.sh
         id: version_read
