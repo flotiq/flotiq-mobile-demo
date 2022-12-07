@@ -1,7 +1,7 @@
 #!/bin/bash
 VERSION=$(cat ./VERSION)
 echo "$VERSION"
-git show show origin/test_master:VERSION
+git show origin/test_master:VERSION
 echo "VERSION=$VERSION">> "$GITHUB_ENV"
 if [ -z "$VERSION" ]
 then
