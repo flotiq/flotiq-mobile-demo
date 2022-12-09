@@ -4,8 +4,8 @@ on: push
   #   types:
   #     - opened
 env:
-  BASE_REF: origin/${{github.base_ref}}
-  HEAD_REF: origin/${{github.head_ref}}
+  BASE_REF: origin/${{ github.base_ref }}
+  HEAD_REF: origin/${{ github.head_ref }}
 jobs:
   version-check:
     runs-on: ubuntu-latest
