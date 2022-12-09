@@ -13,7 +13,6 @@ echo -e "${GREEN}\xE2\x9C\x94${NC}" "${@}"
     # Install
 git fetch origin
 npx -q semver-compare-cli --help > /dev/null || echo ""
-(apt update && apt install -y jq) > /dev/null
 if [ -f VERSION ]; then
     CURRENT_VERSION=$(cat ./VERSION)
 else
