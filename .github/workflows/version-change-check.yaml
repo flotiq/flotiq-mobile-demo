@@ -19,14 +19,4 @@ jobs:
         if: ${{ steps.version_read.output.VERSION }}
         run: |
           echo "Tag name ${{  github.ref_name }}"
-      # - name: Create tag
-      #   uses: actions/github-script@v5
-      #   with:
-      #     script: |
-      #       github.rest.git.createRef({
-      #         owner: context.repo.owner,
-      #         repo: context.repo.repo,
-      #         ref: 'refs/tags/2.0.0',
-      #         sha: context.sha
-      #       })
         
