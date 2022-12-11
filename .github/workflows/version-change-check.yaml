@@ -14,7 +14,8 @@ jobs:
       - uses: actions/setup-node@v3
       - name: test
         run: /
-          echo $BASE_REF
+          echo "$BASE_REF"
+          echo "$GITHUB_REF_NAME"
       - name: version_read
         run: bash .github/workflows/src/version_read.sh
         id: version_read
