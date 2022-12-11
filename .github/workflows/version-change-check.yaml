@@ -1,8 +1,8 @@
 name: version-check
 on: push
-  # pull_request:
-  #   types:
-  #     - opened
+  pull_request:
+    types:
+      - opened
 env:
   BASE_REF: origin/$GITHUB_BASE_REF
   HEAD_REF: origin/$GITHUB_REF
