@@ -12,8 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
-      - name: test
+      - name: test-env
         run: |
+          echo start
           echo base ref "$GITHUB_BASE_REF"
           echo ref "$GITHUB_REF"
       - name: version_read
