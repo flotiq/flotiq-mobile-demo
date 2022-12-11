@@ -1,8 +1,5 @@
 name: version-check
 on: pull_request_target
-env:
-  BASE_REF: origin/$GITHUB_BASE_REF
-  HEAD_REF: origin/$GITHUB_REF
 jobs:
   version-check:
     runs-on: ubuntu-latest

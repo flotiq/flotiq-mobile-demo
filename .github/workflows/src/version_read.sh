@@ -1,6 +1,4 @@
 #!/bin/bash
-  # Define output functions
-
 RED='\033[31;1m'
 GREEN='\033[32;1m'
 NC='\033[0m' # No Color
