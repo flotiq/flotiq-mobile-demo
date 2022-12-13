@@ -17,7 +17,7 @@ else
     echo "No VERSION exists, assuming v0.0.0"
     CURRENT_VERSION="0.0.0"
 fi
-if ! OLD_VERSION=$(git show "$HEAD_BRANCH":VERSION); then
+if ! OLD_VERSION=$(git show "$HEAD_REF":VERSION); then
     echo "No remote VERSION exists, assuming v0.0.0"
     OLD_VERSION="0.0.0"
 fi

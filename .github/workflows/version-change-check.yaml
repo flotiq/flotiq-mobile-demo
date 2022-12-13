@@ -15,8 +15,8 @@ jobs:
       - name: test-env
         run: |
           echo start
-          echo head ref "$HEAD_BRANCH"  
-          echo base name "$BASE_BRANCH"
+          echo head ref "$HEAD_REF"  
+          echo base name "$BASE_REF"
       - name: version_read
         run: bash .github/workflows/src/version_read.sh
         id: version_read
