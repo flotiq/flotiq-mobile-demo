@@ -1,5 +1,7 @@
 name: version-check
-on: pull_request_target
+on:
+  pull_request_target:
+    types: [opened, synchonize]
 jobs:
   version-check:
     runs-on: ubuntu-latest
