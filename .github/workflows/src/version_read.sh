@@ -18,7 +18,7 @@ else
     echo "No VERSION exists, assuming v0.0.0"
     CURRENT_VERSION="0.0.0"
 fi
-if ! OLD_VERSION=$(git show "$HEAD_REF":VERSION); then
+if ! OLD_VERSION=$(git show "$BASE_REF":VERSION); then
     echo "No remote VERSION exists, assuming v0.0.0"
     OLD_VERSION="0.0.0"
 fi
@@ -27,8 +27,8 @@ echo "CURRENT_VERSION=$CURRENT_VERSION"
 echo "VERSION=$VERSION">> "$GITHUB_ENV"
 
 if npx semver-compare-cli $CURRENT_VERSION gt "$OLD_VERSION";
-    then echo_green VERSION increased on "$BASE_REF"
-    else echo_red VERSION needs to increase on "$BASE_REF"; FAILED=true
+    then echo_green VERSION increased on "$HEAD_REF"
+    else echo_red VERSION needs to increase on "$HEAD_REF"; FAILED=true
 fi
 
 if [ -n "$FAILED" ]; then
