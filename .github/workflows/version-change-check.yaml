@@ -1,7 +1,4 @@
 name: version-check
-env:
-  HEAD_BRANCH: origin/$GITHUB_BASE_REF
-  BASE_BRANCH: origin/$GITHUB_BASE_REF
 on:
   pull_request:
     types: [opened, synchronize]
@@ -11,11 +8,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
+      - name: Setting env variables
+        run: |
+          echo "HEAD_REF=origin/$GITHUB_HEAD_REF" >> "$GITHUB_ENV"
+          echo "BASE_REF=origin/$GITHUB_BASE_REF" >> "$GITHUB_ENV"
       - name: test-env
         run: |
           echo start
-          echo base ref "$HEAD_BRANCH"  
-          echo head name "$BASE_BRANCH"
+          echo head ref "$HEAD_BRANCH"  
+          echo base name "$BASE_BRANCH"
       - name: version_read
         run: bash .github/workflows/src/version_read.sh
         id: version_read
