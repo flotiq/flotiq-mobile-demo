@@ -10,7 +10,7 @@ jobs:
         run: |
           echo start
           echo base ref "$GITHUB_BASE_REF"  
-          echo ref "$GITHUB_REF"
+          echo ref name "$GITHUB_REF"
       - name: version_read
         run: bash .github/workflows/src/version_read.sh
         id: version_read
