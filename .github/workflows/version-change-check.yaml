@@ -12,16 +12,6 @@ jobs:
         run: |
           echo "HEAD_REF=origin/$GITHUB_HEAD_REF" >> "$GITHUB_ENV"
           echo "BASE_REF=origin/$GITHUB_BASE_REF" >> "$GITHUB_ENV"
-      - name: test-env
-        run: |
-          echo start
-          echo head ref "$HEAD_REF"  
-          echo base name "$BASE_REF"
-      - name: version_read
-        run: bash .github/workflows/src/version_read.sh
-        id: version_read
       - name: version_check
-        if: ${{ steps.version_read.output.VERSION }}
-        run: |
-          echo "Tag name ${{  github.ref_name }}"
+        run: bash .github/workflows/src/version_read.sh
         
