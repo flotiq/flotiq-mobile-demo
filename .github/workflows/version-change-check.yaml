@@ -1,32 +1,27 @@
 name: version-check
-on: push
-  # pull_request:
-  #   types:
-  #     - opened
+on:
+  pull_request:
+    types: [opened, synchronize]
 jobs:
   version-check:
     runs-on: ubuntu-latest
     steps:
-      - name: init
-        uses: actions/checkout@v3
-      - name: version_read
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - name: Setting env variables
         run: |
-          VERSION=
-          cat ./VERSION > VERSION
-          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+          echo "HEAD_REF=origin/$GITHUB_HEAD_REF" >> "$GITHUB_ENV"
+          echo "BASE_REF=origin/$GITHUB_BASE_REF" >> "$GITHUB_ENV"
+      - name: test-env
+        run: |
+          echo start
+          echo head ref "$HEAD_REF"  
+          echo base name "$BASE_REF"
+      - name: version_read
+        run: bash .github/workflows/src/version_read.sh
         id: version_read
       - name: version_check
-        if: steps.version_read.output.VERSION != ""
+        if: ${{ steps.version_read.output.VERSION }}
         run: |
           echo "Tag name ${{  github.ref_name }}"
-      - name: Create tag
-        uses: actions/github-script@v5
-        with:
-          script: |
-            github.rest.git.createRef({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: 'refs/tags/2.0.0',
-              sha: context.sha
-            })
         
