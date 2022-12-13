@@ -1,6 +1,6 @@
 name: version-check
 on:
-  pull_request_target:
+  pull_request:
     types: [opened, synchronize]
 jobs:
   version-check:
@@ -12,7 +12,7 @@ jobs:
         run: |
           echo start
           echo base ref "$GITHUB_BASE_REF"  
-          echo ref name "$GITHUB_REF"
+          echo head name "$GITHUB_HEAD_REF"
       - name: version_read
         run: bash .github/workflows/src/version_read.sh
         id: version_read
