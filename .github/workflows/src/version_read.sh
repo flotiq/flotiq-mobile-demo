@@ -8,7 +8,7 @@ echo -e "${RED}\xE2\x9C\x98 ${*}${NC}"
 function echo_green () {
 echo -e "${GREEN}\xE2\x9C\x94${NC}" "${@}"
 }
-git fetch origin > /dev/null || echo ""
+git fetch origin --quiet
 npx -q semver-compare-cli --help > /dev/null || echo ""
 if [ -f VERSION ]; then
     CURRENT_VERSION=$(cat ./VERSION)
