@@ -4,7 +4,7 @@ const BUILD_NUMBER_AND_VERSION = fs.readFileSync("VERSION", {
 });
 const BUILD_NUMBER = fs.readFileSync("BUILD_NUMBER", { encoding: "utf8" });
 
-module.exports = {
+module.export = {
   expo: {
     name: "Flotiq Mobile Expo",
     slug: "flotiq-mobile-demo",

@@ -24,7 +24,7 @@ echo "OLD_VERSION=$OLD_VERSION"
 echo "CURRENT_VERSION=$CURRENT_VERSION"
 echo "VERSION=$VERSION">> "$GITHUB_ENV"
 
-if npx semver-compare-cli "$CURRENT_VERSION" gt "$OLD_VERSION";
+if npx semver-compare-cli $CURRENT_VERSION gt "$OLD_VERSION";
     then echo_green VERSION increased on "$HEAD_REF"
     else echo_red VERSION needs to increase on "$HEAD_REF"; FAILED=true
 fi
