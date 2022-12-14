@@ -1,9 +1,10 @@
-name: version-check
+name: build-number-check
 on:
   pull_request:
     types: [opened, synchronize]
+    branches: master
 jobs:
-  version-check:
+  build-number-check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -12,6 +13,6 @@ jobs:
         run: |
           echo "HEAD_REF=origin/$GITHUB_HEAD_REF" >> "$GITHUB_ENV"
           echo "BASE_REF=origin/$GITHUB_BASE_REF" >> "$GITHUB_ENV"
-      - name: version_check
-        run: bash .github/workflows/src/version_check.sh
+      - name: build-number-check
+        run: bash .github/workflows/src/build_number_check.sh
         
