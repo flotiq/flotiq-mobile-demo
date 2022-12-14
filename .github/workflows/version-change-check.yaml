@@ -2,6 +2,7 @@ name: version-check
 on:
   pull_request:
     types: [opened, synchronize]
+    branches: master
 jobs:
   version-check:
     runs-on: ubuntu-latest
