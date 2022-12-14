@@ -1,6 +1,6 @@
 const fs = require("fs");
-const BUILD_NUMBER_AND_VERSION = fs.readFileSync(".\\VERSION", {encoding:'utf8'});
-const BUILD_NUMBER = fs.readFileSync(".\\BUILD_NUMBER", {encoding:'utf8'});
+const BUILD_NUMBER_AND_VERSION = fs.readFileSync("VERSION", {encoding:'utf8'});
+const BUILD_NUMBER = fs.readFileSync("BUILD_NUMBER", {encoding:'utf8'});
 
 module.export = {
   name: "Flotiq Mobile Expo",
