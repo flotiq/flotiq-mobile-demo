@@ -25,12 +25,12 @@ module.exports = {
       icon: "./assets/iconIOS.png",
       supportsTablet: true,
       bundleIdentifier: "eu.codewave.flotiqmobiledemo",
-      buildNumber: BUILD_NUMBER_AND_VERSION,
+      buildNumber: +BUILD_NUMBER_AND_VERSION,
     },
     android: {
       icon: "assets/iconAndroid.png",
       package: "com.flotiqmobiledemo",
-      versionCode: BUILD_NUMBER,
+      versionCode: +BUILD_NUMBER,
     },
     web: {
       favicon: "./assets/favicon.png",
