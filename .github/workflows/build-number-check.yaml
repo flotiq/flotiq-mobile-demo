@@ -1,0 +1,18 @@
+name: build-number-check
+on:
+  pull_request:
+    types: [opened, synchronize]
+    branches: master
+jobs:
+  build-number-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - name: Setting env variables
+        run: |
+          echo "HEAD_REF=origin/$GITHUB_HEAD_REF" >> "$GITHUB_ENV"
+          echo "BASE_REF=origin/$GITHUB_BASE_REF" >> "$GITHUB_ENV"
+      - name: build-number-check
+        run: bash .github/workflows/src/build_number_check.sh
+        

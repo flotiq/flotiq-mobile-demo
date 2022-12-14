@@ -1,4 +1,7 @@
 {
+  "cli": {
+    "appVersionSource": "remote"
+  },
     "build": {
       "master": {
         "android": {
@@ -35,6 +38,9 @@
         "env": {
           "STAGE_NAME": "dev"
         }
+      },
+      "preview": {
+        "distribution": "internal"
       }
     },
     "submit": {
