@@ -8,7 +8,7 @@ module.exports = {
   expo: {
     name: "Flotiq Mobile Expo",
     slug: "flotiq-mobile-demo",
-    version: "2.0.1",
+    version: "3.0.2",
     orientation: "portrait",
     owner: "codewave",
     splash: {

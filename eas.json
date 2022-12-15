@@ -1,9 +1,6 @@
 {
-  "cli": {
-    "appVersionSource": "remote"
-  },
     "build": {
-      "master": {
+      "production": {
         "android": {
           "buildType": "app-bundle"
         },
