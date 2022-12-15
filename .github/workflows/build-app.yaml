@@ -1,5 +1,4 @@
-name: Build app image on expo
-on: workflow_dispatch
+on: workfolow_dispatch
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,4 +23,4 @@ jobs:
         run: npm install
 
       - name: 🚀 Build app
-        run: eas build --profile=master --platform=all --non-interactive
+        run: eas build --non-interactive

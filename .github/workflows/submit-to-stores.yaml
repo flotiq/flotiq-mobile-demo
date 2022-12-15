@@ -1,4 +1,4 @@
-name: Publish latest build
+name: Submites latest build
 on: workflow_dispatch
 jobs:
   publish:
@@ -23,4 +23,4 @@ jobs:
         run: npm install
 
       - name: 🚀 Publish app
-        run: expo publish --non-interactive
+        run: eas submit --non-interactive
