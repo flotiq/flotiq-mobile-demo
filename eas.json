@@ -1,6 +1,7 @@
 {
     "build": {
-      "production": {
+      "master": {
+        "channel": "production",
         "android": {
           "buildType": "app-bundle"
         },
@@ -13,6 +14,7 @@
         }
       },
       "develop": {
+        "channel": "preview",
         "android": {
           "buildType": "apk"
         },
