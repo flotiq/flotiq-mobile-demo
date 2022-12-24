@@ -1,8 +1,9 @@
 const fs = require("fs");
-const BUILD_NUMBER_AND_VERSION = fs.readFileSync("VERSION", {
+const path = require("path")
+const BUILD_NUMBER_AND_VERSION = fs.readFileSync(path.resolve(__dirname, 'VERSION'), {
   encoding: "utf8",
 });
-const BUILD_NUMBER = fs.readFileSync("BUILD_NUMBER", { encoding: "utf8" });
+const BUILD_NUMBER = fs.readFileSync(path.resolve(__dirname,'BUILD_NUMBER'), { encoding: "utf8" });
 
 module.exports = {
   expo: {
