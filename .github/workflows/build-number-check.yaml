@@ -1,4 +1,4 @@
-name: build-number-check
+name: build number check
 on:
   pull_request:
     types: [opened, synchronize]

@@ -1,4 +1,4 @@
-name: version-check
+name: version number check
 on:
   pull_request:
     types: [opened, synchronize]
