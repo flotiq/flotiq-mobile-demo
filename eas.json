@@ -1,58 +1,62 @@
 {
-    "build": {
-      "master": {
-        "android": {
-          "buildType": "app-bundle"
-        },
-        "ios": {
-          "image": "latest"
-        },
-        "distribution": "store",
-        "env": {
-          "STAGE_NAME": "prod"
-        }
+  "build": {
+    "master": {
+      "channel": "production",
+      "android": {
+        "buildType": "app-bundle"
       },
-      "develop": {
-        "android": {
-          "buildType": "apk"
-        },
-        "ios": {
-          "image": "latest"
-        },
-        "distribution": "internal",
-        "env": {
-          "STAGE_NAME": "dev"
-        }
+      "ios": {
+        "image": "latest"
       },
-      "test": {
-        "android": {
-          "buildType": "apk"
-        },
-        "ios": {
-          "image": "latest"
-        },
-        "distribution": "internal",
-        "env": {
-          "STAGE_NAME": "dev"
-        }
+      "distribution": "store",
+      "env": {
+        "STAGE_NAME": "prod"
       }
     },
-    "submit": {
-      "internal": {
-        "ios": {
-          "appleTeamId": "2FFP433XJJ",
-          "ascAppId": "1505331246",
-          "sku": "cdwvlotiqdemoapp",
-          "language": "pl-PL",
-          "companyName": "Codewave sp. zo.o.",
-          "appName": "Flotiq Mobile Expo"
-        },
-        "android": {
-          "serviceAccountKeyPath": "./google-key.json",
-          "track": "internal",
-          "releaseStatus": "completed"
-        }
+    "develop": {
+      "channel": "preview",
+      "android": {
+        "buildType": "apk"
+      },
+      "ios": {
+        "image": "latest"
+      },
+      "distribution": "internal",
+      "env": {
+        "STAGE_NAME": "dev"
+      }
+    },
+    "test": {
+      "android": {
+        "buildType": "apk"
+      },
+      "ios": {
+        "image": "latest"
+      },
+      "distribution": "internal",
+      "env": {
+        "STAGE_NAME": "dev"
+      }
+    },
+    "preview": {
+      "distribution": "internal"
+    }
+  },
+  "submit": {
+    "internal": {
+      "ios": {
+        "appleTeamId": "2FFP433XJJ",
+        "ascAppId": "1505331246",
+        "sku": "cdwvlotiqdemoapp",
+        "language": "pl-PL",
+        "companyName": "Codewave sp. zo.o.",
+        "appName": "Flotiq Mobile Expo"
+      },
+      "android": {
+        "serviceAccountKeyPath": "./google-key.json",
+        "track": "internal",
+        "releaseStatus": "completed"
       }
     }
   }
-  
+}
