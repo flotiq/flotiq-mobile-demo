@@ -48,15 +48,15 @@ We assume you have [nodejs](https://nodejs.org/en/download/) installed.
 2. **Install expo**
 
     ```bash
-   npm install --global expo-cli 
+   yarn global add expo-cli 
    ```
 
 3. **Start developing**
 
     ```bash
    cd flotiq-mobile-demo/
-   npm install
-   npm start
+   yarn install
+   yarn start
     ```
 
 This will start Metro server and open browser tab on which you can start the app on Android and iOS* simulator or on the real device** reading the QR code.
