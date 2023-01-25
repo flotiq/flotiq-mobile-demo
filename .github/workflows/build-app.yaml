@@ -12,7 +12,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16.x
-          cache: npm
+          cache: yarn
 
       - name: 🏗 Setup Expo and EAS
         uses: expo/expo-github-action@v7
@@ -22,7 +22,7 @@ jobs:
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 📦 Install dependencies
-        run: npm install
+        run: yarn install
 
       - name: 🚀 Build app
         run: eas build --non-interactive --profile master --platform all
