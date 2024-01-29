@@ -129,7 +129,6 @@ export const MainNavigator = ({ route }) => {
     const authToken = useSelector((state) => state.auth.apiToken);
     return (
         <Drawer.Navigator
-            useLegacyImplementation
             defaultScreenOptions={defaultScreenOptions}
             drawerContent={(props) => <CustomDrawer {...props} />}
         >

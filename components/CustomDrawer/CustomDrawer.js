@@ -56,7 +56,6 @@ const CustomDrawer = (props) => {
                 </TouchableCmp>
                 <TouchableCmp
                     onPress={() => {
-                        navigation.dispatch(StackActions.popToTop());
                         navigation.navigate('ContentTypesScreen');
                     }}
                     style={styles.touchCmp}

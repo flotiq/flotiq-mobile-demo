@@ -241,6 +241,8 @@ export const contentTypesScreenOptions = ({ navigation }) => (
                 color="#ffffff"
                 containerStyle={{ marginRight: 20 }}
                 size={16}
+                disabled
+                disabledStyle={{ display:"none" }}
             />
         ),
     }
