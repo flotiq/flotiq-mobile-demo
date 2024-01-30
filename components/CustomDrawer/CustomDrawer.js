@@ -4,7 +4,6 @@ import { Text,
     TouchableOpacity,
     TouchableNativeFeedback,
     Platform } from 'react-native';
-import { StackActions } from '@react-navigation/native';
 
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './styles';
