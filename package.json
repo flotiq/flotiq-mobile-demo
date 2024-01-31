@@ -1,6 +1,6 @@
 {
   "name": "FlotiqMobileDemo",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "npx expo start",
