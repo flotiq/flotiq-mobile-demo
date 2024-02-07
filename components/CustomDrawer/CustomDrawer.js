@@ -4,7 +4,6 @@ import { Text,
     TouchableOpacity,
     TouchableNativeFeedback,
     Platform } from 'react-native';
-import { StackActions } from '@react-navigation/native';
 
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './styles';
@@ -54,9 +53,10 @@ const CustomDrawer = (props) => {
                         </Text>
                     </View>
                 </TouchableCmp>
+            </View>
+            <View>
                 <TouchableCmp
                     onPress={() => {
-                        navigation.dispatch(StackActions.popToTop());
                         navigation.navigate('ContentTypesScreen');
                     }}
                     style={styles.touchCmp}
