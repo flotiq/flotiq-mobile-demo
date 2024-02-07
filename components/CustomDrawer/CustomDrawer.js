@@ -53,6 +53,8 @@ const CustomDrawer = (props) => {
                         </Text>
                     </View>
                 </TouchableCmp>
+            </View>
+            <View>
                 <TouchableCmp
                     onPress={() => {
                         navigation.navigate('ContentTypesScreen');
