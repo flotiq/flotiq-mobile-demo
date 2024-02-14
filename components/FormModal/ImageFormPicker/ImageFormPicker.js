@@ -65,7 +65,7 @@ const ImageFormPicker = ({ elId, onTakeImg }) => {
         }
     };
     const verifyPermissions = async () => {
-        const result = await Camera.requestPermissionsAsync();
+        const result = await Camera.requestCameraPermissionsAsync();
         if (result.status !== 'granted') {
             showAlert();
             return false;

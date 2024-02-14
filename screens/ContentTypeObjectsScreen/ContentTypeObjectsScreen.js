@@ -363,9 +363,9 @@ const ContentTypeObjectsScreen = (props) => {
                         dataType={contentTypeLabel}
                     />
                 )}
-            <FloatButton
+            {contentTypeName !== "_media" && (<FloatButton
                 onPressFloatBtn={() => setFormModalVisibility(!formModalVisibility)}
-            />
+            />)}
             {(formModalVisibility && contentTypesDefinitions && contentTypeName)
                 && (
                     <FormModal
