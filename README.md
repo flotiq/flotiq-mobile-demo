@@ -19,7 +19,7 @@ Screenshots:
 <p float="left">
 <img src="https://api.flotiq.com/image/225x400/_media-312eac73-40fa-49e8-899d-dad955dcce5c.png">
 <img src="https://api.flotiq.com/image/225x400/_media-e14b4826-377b-4c71-a922-3b4ed95a0dc6.png">
-<img src="https://api.flotiq.com/image/225x400/_media-9c0c4c60-dbb6-4598-a91c-a69732a0fce7.png">
+<img src="https://api.flotiq.com/image/225x400/_media-f082f83a-10b3-4271-80b7-90fb641f2ece.png">
 <img src="https://api.flotiq.com/image/225x400/_media-6ce3b769-d819-44ad-b653-dd5d3e7380f8.png">
 </p>
 
@@ -31,8 +31,6 @@ Screenshots:
 * Listing Content Objects
 * Single Content Object preview
 * Content Object management (create, update, delete)
-* Content Objects search
-* Adding media using the file browser or camera
 
 
 ## Quick start
