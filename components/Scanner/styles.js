@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
+        alignItems: 'center',
     },
     containerStyle: {
         width: '100%',
@@ -18,8 +19,13 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontFamily: 'Inter-Regular',
     },
-    scannerContainer: {
-        backgroundColor: Colors.accent3,
+    botomContent: {
+        color: Colors.secondary,
+        fontSize: 20,
+        fontFamily: 'Inter-Regular',
+    },
+    containerButton: {
+        marginTop: 10
     },
 });
 

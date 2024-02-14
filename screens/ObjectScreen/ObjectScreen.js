@@ -53,13 +53,15 @@ const ObjectScreen = (props) => {
                     navigation.dispatch(
                         CommonActions.setParams({ deleteContentTypeObject: false }),
                     );
+
                     confirmDeleteAction('Are you sure?').then(async (r) => {
                         if (r === 'CANCEL') return;
                         setIsUpdate(true);
-                        await httpCT.removeContentObject(ctoName, ctoId);
+                        await httpCT.removeContentObject(ctoName, ctoId); 
                         navigation.navigate({
                             name: 'ContentTypeObjectsScreen',
                             params: {
+                                contentTypeName: ctoName,
                                 refetchData: true,
                             },
                         });
@@ -189,6 +191,7 @@ const ObjectScreen = (props) => {
             props.navigation.navigate({
                 name: 'ContentTypeObjectsScreen',
                 params: {
+                    contentTypeName: ctoName,
                     refetchData: true,
                 },
             });

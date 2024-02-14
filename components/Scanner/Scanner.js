@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { View, Dimensions } from 'react-native';
+import { LogBox, View, Dimensions } from 'react-native';
 import { Text } from 'react-native-elements';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 
 import styles from './styles';
 import CustomBtn from '../CustomBtn/CustomBtn';
+
+LogBox.ignoreLogs(['BarCodeScanner']);
 
 const Scanner = ({ onQRCode, hide }) => {
     const [hasPermission, setHasPermission] = useState(null);
@@ -41,9 +43,10 @@ const Scanner = ({ onQRCode, hide }) => {
                 style={{ width: Dimensions.get('window').width,
                     height: Dimensions.get('window').width }}
             />
-            <View>
+            <View style={styles.containerButton}>
                 <CustomBtn
                     title="Close"
+                    style={styles.button}
                     onPressBtn={hide}
                 />
             </View>
@@ -52,3 +55,5 @@ const Scanner = ({ onQRCode, hide }) => {
 };
 
 export default Scanner;
+
+ 
