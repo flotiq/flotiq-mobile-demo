@@ -42,7 +42,7 @@ module.exports = {
       },
     },
     runtimeVersion: {
-      policy: "sdkVersion",
+      policy: "appVersion",
     },
     plugins: [
       "expo-font",
