@@ -1,6 +1,6 @@
 {
   "name": "FlotiqMobileDemo",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "npx expo start",
@@ -33,7 +33,7 @@
     "expo-updates": "~0.24.10",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-native": "0.73.2",
+    "react-native": "0.73.4",
     "react-native-elements": "^3.4.1",
     "react-native-gesture-handler": "~2.14.0",
     "react-native-get-random-values": "~1.8.0",
