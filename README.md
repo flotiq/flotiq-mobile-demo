@@ -1,6 +1,15 @@
 <a href="https://flotiq.com/">
     <img src="https://editor.flotiq.com/fonts/fq-logo.svg" alt="Flotiq logo" title="Flotiq" align="right" height="60" />
 </a>
+  
+<br/>
+
+<br/>
+
+<br/>
+
+> [!IMPORTANT]  
+Currently we do not support Flotiq mobile app due to low interest from our users. Pull requests are welcome.
 
 Flotiq Mobile Expo
 ========================
