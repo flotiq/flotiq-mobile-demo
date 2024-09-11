@@ -9,7 +9,7 @@
 <br/>
 
 > [!IMPORTANT]  
-Currently we do not support Flotiq mobile app due to low interest from our users. Pull requests are welcome.
+We are not actively maintaining this repository due to low interest from our users. PRs are welcome.
 
 Flotiq Mobile Expo
 ========================
